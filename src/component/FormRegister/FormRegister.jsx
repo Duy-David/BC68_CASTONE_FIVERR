@@ -1,4 +1,4 @@
-//
+
 import React, { useContext } from "react";
 import InputCustom from "../../Input/InputCustom";
 import { DatePicker, notification } from "antd";
@@ -8,9 +8,10 @@ import { noticeValuation } from "../../common/noticeValuation";
 import { http } from "../../service/config";
 import { authService } from "../../service/auth.service";
 import { NotificationContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 const FormRegister = () => {
-  const notificationValue = useContext(NotificationContext);
-  console.log(notificationValue);
+  const { handleNotification } = useContext(NotificationContext);
+  const navigaite = useNavigate();
   const {
     handleChange,
     handleSubmit,
@@ -41,11 +42,20 @@ const FormRegister = () => {
           gender: (values.gender = values.gender == "Nam" ? true : false),
         })
         .then((res) => {
+          //thực hiện thông báo cho người dùng
+
           console.log(res);
+          handleNotification(
+            "chúc mừng tạo tài khoản thành công bạn sẽ chuyển về đăng trang nhập",
+            "success"
+          );
+          setTimeout(() => {
+            navigaite("/dang-nhap");
+          }, 2000);
         })
         .catch((err) => {
           console.log(err);
-          notificationValue.handleNotification(err.response.data.content, "error")
+          handleNotification(err.response.data.content, "error");
         });
     },
     validationSchema: yup.object({
@@ -73,7 +83,7 @@ const FormRegister = () => {
         ),
       birthday: yup.string().required(noticeValuation.empty),
       gender: yup.string().required(noticeValuation.empty),
-    }), 
+    }),
   });
   return (
     <div className=" flex items-center justify-center flex-col h-full ">
