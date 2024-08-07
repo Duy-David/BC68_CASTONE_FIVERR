@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { pathDefault } from "../../common/path";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
+import "./header.scss";
 import LinkCustom from "../LinkCustom/LinkCustom";
 const items = [
   {
@@ -68,8 +69,8 @@ const Header = () => {
                 items,
               }}
               trigger={["click"]}
-           className="cursor-pointer py-3 px-4 hover:bg-gray-500 duration-300 rounded-md"
-           >
+              className="cursor-pointer py-3 px-4 hover:bg-gray-500 duration-300 rounded-md"
+            >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
                   Click me
@@ -79,9 +80,17 @@ const Header = () => {
             </Dropdown>
             <button>Eng</button>
             <a href="#"> Become a Seller</a>
-            <LinkCustom content={"Đăng nhập"} to={pathDefault.login} className={"border border-green-500 text-green-500"}/>
-            <LinkCustom content={"Đăng ký"} to={pathDefault.register} className={"bg-green-600 text-white"}/>
-            </nav>
+            <LinkCustom
+              content={"Đăng nhập"}
+              to={pathDefault.login}
+              className={"border border-green-500 text-green-500"}
+            />
+            <LinkCustom
+              content={"Đăng ký"}
+              to={pathDefault.register}
+              className={"bg-green-600 text-white"}
+            />
+          </nav>
         </div>
       </div>
     </header>
