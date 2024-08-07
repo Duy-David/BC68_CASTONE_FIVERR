@@ -5,7 +5,6 @@ import { DatePicker, notification } from "antd";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { noticeValuation } from "../../common/noticeValuation";
-import { http } from "../../service/config";
 import { authService } from "../../service/auth.service";
 import { NotificationContext } from "../../App";
 import { useNavigate } from "react-router-dom";
