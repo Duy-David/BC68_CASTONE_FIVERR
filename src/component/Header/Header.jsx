@@ -6,6 +6,7 @@ import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import "./header.scss";
 import LinkCustom from "../LinkCustom/LinkCustom";
+import FormSearchProduct from "../FormSearchProduct/FormSearchProduct";
 const items = [
   {
     key: "1",
@@ -58,11 +59,13 @@ const Header = () => {
     <header className="py-5">
       <div className="container">
         <div className="header-content flex justify-between items-center">
-          <div className="header-logo">
+          <div className="header-logo flex items-center space-x-4">
             <Link to={pathDefault.homePage}>
               <IconLogoHeader />
             </Link>
+              <FormSearchProduct />
           </div>
+
           <nav className="header-navigation space-x-5">
             <Dropdown
               menu={{

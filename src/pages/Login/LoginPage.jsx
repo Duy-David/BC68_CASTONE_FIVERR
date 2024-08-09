@@ -47,25 +47,6 @@ const LoginPage = () => {
           console.log(error);
           handleNotification(error.response.data.content, "error");
         }
-        // try {
-        //   const res = await authService.signIn(values);
-
-        //   console.log(res);
-        //   //lưu trử dữ lieu xuống local
-
-        //   setLocalStorage("user", result.data.content);
-        //   // chuyển hướng người dung
-        //   dispatch(setValueUser(result.data.content));
-        //   handleNotification(
-        //     "Dang nhập thành công, bạn sẽ được chuyển đến trag chử",
-        //     "success"
-        //   );
-        //   setTimeout(() => {
-        //     navigate("/");
-        //   }, 2000);
-        // } catch (err) {
-        //   console.log(err);
-        // }
       },
       validationSchema: yup.object({
         email: yup
@@ -75,8 +56,10 @@ const LoginPage = () => {
         password: yup
           .string()
           .required(noticeValuation.empty)
-          .min(6, "vui lòng nhập tối thiểu 6 ký tự")
-          .max(10, "Vui lòng nhập  tối đa 10 ký tự"),
+          .matches(
+            /^(?=.*[A-Z])(?=.*\d).+$/,
+            "Vui lòng nhập ít nhất một chử cái viết hoa và số"
+          ),
       }),
     });
 
@@ -86,9 +69,7 @@ const LoginPage = () => {
         <div className="loginPage_img w-1/2">{View}</div>
         <div className="loginPage_form w-1/2 px-5">
           <form className="space-y-5" onSubmit={handleSubmit}>
-            <h1 className="font-medium text-4xl text-center">
-              Giao diên đăng nhập
-            </h1>
+            <h1 className="font-medium text-4xl text-center">Đăng nhập</h1>
             <InputCustom
               contentLabel={"Email"}
               placeHolder={"Vui lòng nhập email"}
@@ -121,9 +102,12 @@ const LoginPage = () => {
             </div>
           </form>
 
-          <Link className="text-blue-500 mt-5 inline-block hover:underline" to={"/dang-ky"}>
+          <Link
+            className="text-blue-800 mt-5 inline-block hover:underline"
+            to={"/dang-ky"}
+          >
             {" "}
-            Chưa có tài khoản phải đăng ký thì nhấn vào đây để đăng ký
+            Chưa có tài khoản phải đăng ký thì nhấn vào để đăng ký
           </Link>
         </div>
       </div>

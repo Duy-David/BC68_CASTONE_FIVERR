@@ -1,4 +1,3 @@
-
 import React, { useContext } from "react";
 import InputCustom from "../../Input/InputCustom";
 import { DatePicker, notification } from "antd";
@@ -85,104 +84,104 @@ const FormRegister = () => {
     }),
   });
   return (
-    <div className=" flex items-center justify-center flex-col h-full ">
-      <h1>Form đăng ký</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-wrap">
-          <InputCustom
-            contentLabel={"Họ Tên"}
-            name={"name"}
-            placeHolder={"Vui lòng nhập tên"}
-            classWrapper="w-1/2 p-3 "
-            onChange={handleChange}
-            valueHey
-            Cortana={values.name}
-            onBlur={handleBlur}
-            errors={errors.name}
-            touched={touched.name}
-          />
-          <InputCustom
-            contentLabel={"Email"}
-            name={"email"}
-            placeHolder={"Vui lòng nhập email"}
-            classWrapper="w-1/2 p-3"
-            onChange={handleChange}
-            value={values.email}
-            onBlur={handleBlur}
-            errors={errors.email}
-            touched={touched.email}
-          />
-          <InputCustom
-            contentLabel={"Mật khẩu"}
-            name={"password"}
-            placeHolder={"Vui lòng nhập Mật khẩu"}
-            classWrapper="w-full p-3"
-            type="password"
-            onChange={handleChange}
-            value={values.password}
-            onBlur={handleBlur}
-            errors={errors.password}
-            touched={touched.password}
-          />
-          <InputCustom
-            contentLabel={"Số Điện thoại"}
-            name={"phone"}
-            placeHolder={"Vui lòng nhập Số điện thoại"}
-            classWrapper="w-1/3 p-3"
-            onChange={handleChange}
-            value={values.phone}
-            onBlur={handleBlur}
-            errors={errors.phone}
-            touched={touched.phone}
-          />
-          <div className="w-1/3 p-3">
-            <label className="block mb-2 text-sm font-medium text-gray-900">
-              Ngày Sinh
-            </label>
-            <DatePicker
-              className="w-full"
-              format="DD-MM-YYYY"
-              onChange={(datejs, datestring) => {
-                setFieldValue("birthday", datestring);
-              }}
-            />
-            {errors.birthday && touched.birthday ? (
-              <p className="text-red-500"> {errors.birthday}</p>
-            ) : null}
-          </div>
-          <div className="w-1/3 p-3">
-            <label className="block mb-2 text-sm font-medium text-gray-900">
-              Giới tính
-            </label>
-            <select
-              name="gender"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      <div className="flex items-center justify-center flex-col h-full ">
+        <h1 className="font-medium text-4xl ">Đăng ký</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="flex flex-wrap">
+            <InputCustom
+              contentLabel={"Họ Tên"}
+              name={"name"}
+              placeHolder={"Vui lòng nhập tên"}
+              classWrapper="w-1/2 p-3 "
               onChange={handleChange}
-              value={values.gender}
-            >
-              <option value="">Vui lòng chọn giới tính</option>
-              <option value="Nam">Nam</option>
-              <option value="Nữ">Nữ</option>
-            </select>
-            {errors.gender && touched.gender ? (
-              <p className="text-red-500"> {errors.gender}</p>
-            ) : null}
+              valueHey
+              Cortana={values.name}
+              onBlur={handleBlur}
+              errors={errors.name}
+              touched={touched.name}
+            />
+            <InputCustom
+              contentLabel={"Email"}
+              name={"email"}
+              placeHolder={"Vui lòng nhập email"}
+              classWrapper="w-1/2 p-3"
+              onChange={handleChange}
+              value={values.email}
+              onBlur={handleBlur}
+              errors={errors.email}
+              touched={touched.email}
+            />
+            <InputCustom
+              contentLabel={"Mật khẩu"}
+              name={"password"}
+              placeHolder={"Vui lòng nhập Mật khẩu"}
+              classWrapper="w-full p-3"
+              type="password"
+              onChange={handleChange}
+              value={values.password}
+              onBlur={handleBlur}
+              errors={errors.password}
+              touched={touched.password}
+            />
+            <InputCustom
+              contentLabel={"Số Điện thoại"}
+              name={"phone"}
+              placeHolder={"Vui lòng nhập Số điện thoại"}
+              classWrapper="w-1/3 p-3"
+              onChange={handleChange}
+              value={values.phone}
+              onBlur={handleBlur}
+              errors={errors.phone}
+              touched={touched.phone}
+            />
+            <div className="w-1/3 p-3">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
+                Ngày Sinh
+              </label>
+              <DatePicker
+                className="w-full"
+                format="DD-MM-YYYY"
+                onChange={(datejs, datestring) => {
+                  setFieldValue("birthday", datestring);
+                }}
+              />
+              {errors.birthday && touched.birthday ? (
+                <p className="text-red-500"> {errors.birthday}</p>
+              ) : null}
+            </div>
+            <div className="w-1/3 p-3">
+              <label className="block mb-2 text-sm font-medium text-gray-900">
+                Giới tính
+              </label>
+              <select
+                name="gender"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                onChange={handleChange}
+                value={values.gender}
+              >
+                <option value="">Vui lòng chọn giới tính</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
+              {errors.gender && touched.gender ? (
+                <p className="text-red-500"> {errors.gender}</p>
+              ) : null}
+            </div>
+            <div className="w-full p-3">
+              <button
+                className="py-3 px-6 bg-black text-white rounded-lg w-full"
+                type="submit"
+                // onClick={(e) => {
+                //   e.preventDefault();
+                //   handleSubmit();
+                // }}
+              >
+                Đăng ký
+              </button>
+            </div>
           </div>
-          <div className="w-full">
-            <button
-              className="py-3 px-6 bg-black text-white rounded-lg w-full"
-              type="submit"
-              // onClick={(e) => {
-              //   e.preventDefault();
-              //   handleSubmit();
-              // }}
-            >
-              Đăng ký
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
   );
 };
 
