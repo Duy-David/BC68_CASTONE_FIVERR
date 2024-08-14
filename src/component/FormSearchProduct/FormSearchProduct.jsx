@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import useResponsive from "../../hook/useResponsive";
 import InputCustom from "../../Input/InputCustom";
 import Banner from "../Banner/Banner";
@@ -29,6 +29,7 @@ const FormSearchProduct = () => {
       congViecService
         .layCongViecTheoTen(valueSearch)
         .then((res) => {
+     console.log(res)
           const newListJobSuggest = res.data.content
             .slice(0, 4)
             .map((item, index) => {
@@ -42,7 +43,7 @@ const FormSearchProduct = () => {
                     <img src={item.congViec.hinhAnh} className="h-14" alt="" />
                     <div>
                       <h4>{item.congViec.tenCongViec}</h4>
-                      <p>{item.congViec.giaTien}</p>
+                      <p>Price: ${item.congViec.giaTien}.00</p>
                     </div>
                   </Link>
                 ),
