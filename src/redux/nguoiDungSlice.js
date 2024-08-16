@@ -9,8 +9,9 @@ export const getValueUserAPI = createAsyncThunk(
     return result.data.content;
   }
 );
+
 const initialState = {
-  listUser: [],
+  listUsers: [],
 };
 
 const nguoiDungSlice = createSlice({
@@ -20,7 +21,7 @@ const nguoiDungSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getValueUserAPI.fulfilled, (state, action) => {
       console.log(action);
-      state.listUser = action.payload;
+      state.listUsers = action.payload;
     });
     builder.addCase(getValueUserAPI.pending, (state, action) => {
       console.log("Tôi đang chở xữ lý");

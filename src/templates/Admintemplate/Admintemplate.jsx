@@ -26,9 +26,7 @@ const Admintemplate = () => {
       ? (window.location.href = "https://www.google.com/")
       : null;
   }, []);
-  useEffect(() => {
-    dispatch(getValueUserAPI());
-  }, []);
+  
   return (
     <Layout className="min-h-full">
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -41,7 +39,7 @@ const Admintemplate = () => {
             {
               key: "1",
               icon: <UserOutlined />,
-              label: <Link>Người dùng</Link>,
+              label: <Link to={"/admin/manager-user"}>Người dùng</Link>,
             },
             {
               key: "2",
