@@ -48,6 +48,7 @@ const useRoutesCustom = () => {
           // index: true,
           element: (
             <Suspense fallback={<Skeleton />}>
+            {/*  <Suspense fallback={<div>...Loading</div>}> */}
               <ManagerUser />
             </Suspense>
           ),
