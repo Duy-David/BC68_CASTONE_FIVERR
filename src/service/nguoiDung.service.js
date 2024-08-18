@@ -7,9 +7,6 @@ export const nguoiDungService = {
   deleteUser: (id) => {
     return http.delete(`/users?id=${id}`);
   },
-  getUser: (id) => {
-    return http.get(`/users/${id}`);
-  },
   updateUser: (id, data) => {
     return http.put(`/users/${id}`, data);
   },
