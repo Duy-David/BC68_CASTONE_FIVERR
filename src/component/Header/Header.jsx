@@ -53,7 +53,26 @@ const items = [
     label: "a danger item",
   },
 ];
+const navLinks = [
+  { name: "Fiverr Business", href: "#" },
+  { name: "Explore", href: "#" },
+  { name: "English", href: "#" },
+  { name: "US$ USD", href: "#" },
+  { name: "Become a Seller", href: "#" },
+  { name: "Sign In", href: "#" },
+];
 
+const categoryLinks = [
+  "Graphics & Design",
+  "Digital Marketing",
+  "Writing & Translation",
+  "Video & Animation",
+  "Music & Audio",
+  "Programming & Tech",
+  "Business",
+  "Lifestyle",
+  "Trending",
+];
 const Header = () => {
   return (
     <header className="py-5">
@@ -63,7 +82,7 @@ const Header = () => {
             <Link to={pathDefault.homePage}>
               <IconLogoHeader />
             </Link>
-              <FormSearchProduct />
+            <FormSearchProduct />
           </div>
 
           <nav className="header-navigation space-x-5">
@@ -94,6 +113,13 @@ const Header = () => {
               className={"bg-green-600 text-white"}
             />
           </nav>
+        </div>
+        <div className="mt-4 flex justify-between text-gray-700">
+          {categoryLinks.map((category, index) => (
+            <a key={index} href="#" className="hover:text-green-500">
+              {category}
+            </a>
+          ))}
         </div>
       </div>
     </header>

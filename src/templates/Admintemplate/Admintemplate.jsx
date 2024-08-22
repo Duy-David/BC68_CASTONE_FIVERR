@@ -26,7 +26,7 @@ const Admintemplate = () => {
       ? (window.location.href = "https://www.google.com/")
       : null;
   }, []);
-  
+
   return (
     <Layout className="min-h-full">
       <Sider trigger={null} collapsible collapsed={collapsed}>

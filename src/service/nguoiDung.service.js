@@ -10,4 +10,7 @@ export const nguoiDungService = {
   updateUser: (id, data) => {
     return http.put(`/users/${id}`, data);
   },
+  createUser: (data) => {
+    return http.post("/users", data);
+  },
 };

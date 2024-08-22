@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { congViecService } from "../../service/congviec.service";
+import { pathDefault } from "../../common/path";
 
 const ListJobPage = () => {
   const [searchParam, setSearchParam] = useSearchParams();
@@ -25,7 +26,7 @@ const ListJobPage = () => {
         {listJob.map((item) => {
           console.log(item);
           return (
-            <Link to={`/cong-viec-chi-tiet/${item.id}`}>
+            <Link to={`${pathDefault.detailListJob}`}>
               <div className="border border-gray-300">
                 <img src={item.congViec.hinhAnh} alt="" className="w-full" />
                 <div className="px-3">
@@ -67,7 +68,7 @@ const ListJobPage = () => {
             </Link>
           );
         })}{" "}
-      </div>
+        </div>
     );
   };
   return <div className="container"> {renderListJob()}</div>;

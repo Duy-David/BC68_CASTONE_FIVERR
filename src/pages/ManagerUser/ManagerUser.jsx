@@ -64,25 +64,25 @@ const ManagerUser = () => {
           );
         });
     },
-    // validationSchema: yup.object({
-    //   email: yup
-    //     .string()
-    //     .email("Vui lòng nhập định dạng email")
-    //     .required("Vui lòng nhập dữ liệu"),
-    //   msnv: yup
-    //     .string()
-    //     .required("Vui lòng không được bỏ trống")
-    //     .min(4, "Vui lòng nhập trên 4 ký tự")
-    //     .max(8, "Vui lòng nhập ít hơn 8 ký tự"),
-    //   matKhau: yup
-    //     .string()
-    //     .matches(
-    //       /^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$/,
-    //       " Vui lòng nhập bao gồm ít nhất 1 ký tự đặt biệt,1 chữ cái viết hoa, và  trong khoản từ 6 đến 12 ký tự"
-    //     )
-    //     .min(6, "Vui lòng nhập trên 6 ký tự")
-    //     .max(12, "Vui lòng nhập ít hơn 12 ký tự"),
-    // }),
+    validationSchema: yup.object({
+      email: yup
+        .string()
+        .email("Vui lòng nhập định dạng email")
+        .required("Vui lòng nhập dữ liệu"),
+      msnv: yup
+        .string()
+        .required("Vui lòng không được bỏ trống")
+        .min(4, "Vui lòng nhập trên 4 ký tự")
+        .max(8, "Vui lòng nhập ít hơn 8 ký tự"),
+      matKhau: yup
+        .string()
+        .matches(
+          /^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$/,
+          " Vui lòng nhập bao gồm ít nhất 1 ký tự đặt biệt,1 chữ cái viết hoa, và  trong khoản từ 6 đến 12 ký tự"
+        )
+        .min(6, "Vui lòng nhập trên 6 ký tự")
+        .max(12, "Vui lòng nhập ít hơn 12 ký tự"),
+    }),
   });
   console.log(listUsers);
   useEffect(() => {

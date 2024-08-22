@@ -48,19 +48,19 @@ const LoginPage = () => {
           handleNotification(error.response.data.content, "error");
         }
       },
-      validationSchema: yup.object({
-        email: yup
-          .string()
-          .email(noticeValuation.email)
-          .required(noticeValuation.empty),
-        password: yup
-          .string()
-          .required(noticeValuation.empty)
-          .matches(
-            /^(?=.*[A-Z])(?=.*\d).+$/,
-            "Vui lòng nhập ít nhất một chử cái viết hoa và số"
-          ),
-      }),
+      // validationSchema: yup.object({
+      //   email: yup
+      //     .string()
+      //     .email(noticeValuation.email)
+      //     .required(noticeValuation.empty),
+      //   password: yup
+      //     .string()
+      //     .required(noticeValuation.empty)
+      //     .matches(
+      //       /^(?=.*[A-Z])(?=.*\d).+$/,
+      //       "Vui lòng nhập ít nhất một chử cái viết hoa và số"
+      //     ),
+      // }),
     });
 
   return (
