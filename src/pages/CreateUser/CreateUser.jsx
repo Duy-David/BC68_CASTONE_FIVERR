@@ -39,11 +39,12 @@ const CreateUser = () => {
   };
   const handelSubmitFormCreateUser = (event) => {
     event.preventDefault();
-    console.log(event);
+    console.log(userValue);
     nguoiDungService
       .createUser(userValue)
       .then((res) => {
         console.log(res);
+        //đẩy người dùng đế trang update hình ảnh
         // setStep(step + 1);
         setIsActive(false);
         handleNotification("Tạo tài khoản thành công", "success");
@@ -107,13 +108,14 @@ const CreateUser = () => {
                 htmlFor=""
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Ngày sinh
+                Birthday
               </label>
               <input
                 type="date"
-                name="birthday"
+                //name="birthday"
                 value={userValue.birthday.split("-").reverse().join("-")}
                 onChange={(event) => {
+                  console.log(event.target.value)
                   // const arrDate =event.target.value.split("-").reverse().join("-")
                   const [year, mouth, day] = event.target.value.split("-");
                   let valueDate = `${day}-${mouth}-${year}`;
@@ -150,8 +152,8 @@ const CreateUser = () => {
                 name="gender"
                 onChange={handleChangeValue}
               >
-                <option value={true}>Nam</option>
-                <option value={false}>Nữ</option>
+                <option value={true}>Male</option>
+                <option value={false}>Female</option>
               </select>
             </div>
             <div className="col-span-2">
@@ -159,7 +161,7 @@ const CreateUser = () => {
                 htmlFor="countries"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Chọn Skill
+                 Skill
               </label>
               <Select
                 mode="multiple"
@@ -169,10 +171,11 @@ const CreateUser = () => {
                 }}
                 placeholder="Please select"
                 options={listSKill}
-                onChange={(value) => {
+                onChange={(value,option) => {
                   console.log(value);
                   setUserValue({ ...userValue, skill: value });
                 }}
+                
               />
             </div>
             <div className="col-span-2">
@@ -180,7 +183,7 @@ const CreateUser = () => {
                 htmlFor="countries"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                Chọn Certification
+                Certification
               </label>
               <Select
                 mode="tags"
