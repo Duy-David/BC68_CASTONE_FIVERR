@@ -5,6 +5,7 @@ import { skillService } from "../../service/skill.service";
 import { nguoiDungService } from "../../service/nguoiDung.service";
 import { Select, Space } from "antd";
 import { NotificationContext } from "../../App";
+import { useSelector } from "react-redux";
 
 const options = [];
 for (let i = 10; i < 36; i++) {
@@ -17,6 +18,7 @@ for (let i = 10; i < 36; i++) {
 const CreateUser = () => {
   const { handleNotification } = useContext(NotificationContext);
   // cập nhật list skill
+  const { user } = useSelector((state) => state.authSlice);
   const [listSKill, setListSKill] = useState([]);
   // state quản lý value của 1 object
   const [userValue, setUserValue] = useState({
@@ -31,11 +33,28 @@ const CreateUser = () => {
     certification: [],
   });
   // các bước tạo user mới
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(true);
+  const [imgUpload, setImgUpload] = useState(null);
+  const [errorImage, setErrorImage] = useState("");
   const handleChangeValue = (event) => {
     const { name, value } = event.target;
     setUserValue({ ...userValue, [name]: value });
+  };
+  const handelSubmitAvatar = (e) => {
+    e.preventDefault();
+    let formData = new formData();
+    if (imgUpload) {
+      formData.append("formFile", imgUpload.image);
+      nguoiDungService
+        .uploadAvatar(user.token, formData)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   const handelSubmitFormCreateUser = (event) => {
     event.preventDefault();
@@ -115,7 +134,7 @@ const CreateUser = () => {
                 //name="birthday"
                 value={userValue.birthday.split("-").reverse().join("-")}
                 onChange={(event) => {
-                  console.log(event.target.value)
+                  console.log(event.target.value);
                   // const arrDate =event.target.value.split("-").reverse().join("-")
                   const [year, mouth, day] = event.target.value.split("-");
                   let valueDate = `${day}-${mouth}-${year}`;
@@ -161,7 +180,7 @@ const CreateUser = () => {
                 htmlFor="countries"
                 className="block mb-2 text-sm font-medium text-gray-900 "
               >
-                 Skill
+                Skill
               </label>
               <Select
                 mode="multiple"
@@ -171,11 +190,10 @@ const CreateUser = () => {
                 }}
                 placeholder="Please select"
                 options={listSKill}
-                onChange={(value,option) => {
+                onChange={(value, option) => {
                   console.log(value);
                   setUserValue({ ...userValue, skill: value });
                 }}
-                
               />
             </div>
             <div className="col-span-2">
@@ -212,7 +230,49 @@ const CreateUser = () => {
           </form>
         );
       case 1:
-        return <div> Tôi là layout thứ 2</div>;
+        return (
+          <div>
+            {" "}
+            <form action="" className="space-y-3" onSubmit={handelSubmitAvatar}>
+              <h2> upload hình cho người dùng</h2>
+              <div>
+                <label
+                  htmlFor="countries"
+                  className="block mb-2 text-sm font-medium text-gray-900 "
+                >
+                  Upload Image
+                </label>
+                <input
+                  accept="image/png, image/jpeg"
+                  type="file"
+                  onChange={(event) => {
+                    const image = event.target.files[0];
+
+                    if (image) {
+                      //kiểm tra dung lương hình ảnh
+
+                      if (image.size > 1024 * 1024 * 2) {
+                        setErrorImage("aKích thước vyớt quá dugn lượng");
+                        return;
+                      }
+                      const imageUrl = URL.createObjectURL(image);
+                      console.log(imageUrl);
+                      setImgUpload({ image, imageUrl });
+                    }
+                  }}
+                />
+              </div>
+              <p className="text-red-500 ">{errorImage}</p>
+              <img src={imgUpload?.imageUrl} alt="" className="w-32" />
+              <button
+                type="submit"
+                className="px-5 py-2 bg-green-500 text-white rounded-md"
+              >
+                Upload hình ảnh
+              </button>
+            </form>
+          </div>
+        );
     }
   };
   return (

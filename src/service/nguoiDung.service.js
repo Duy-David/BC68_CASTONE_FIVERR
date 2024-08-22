@@ -13,4 +13,9 @@ export const nguoiDungService = {
   createUser: (data) => {
     return http.post("/users", data);
   },
+  uploadAvatar: (token, data) => {
+    return http.post("/users/upload-avatar", data, { headers: 
+      { token } 
+    });
+  },
 };
