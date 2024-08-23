@@ -7,8 +7,8 @@ export const congViecChiTietService = {
   layBinhLuanTheoCongViec: (maCongViec) => {
     return http.get(`/binh-luan/lay-binh-luan-theo-cong-viec/${maCongViec}`);
   },
-  binhLuanPost: (data) => {
-    return http.post(`/binh-luan`, data);
+  binhLuanPost: (data, token) => {
+    return http.post(`/binh-luan`, data, { headers: { token } });
   },
   thueCongViec: () => {
     return http.post(`/thue-cong-viec`);

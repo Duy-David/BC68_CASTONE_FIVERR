@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import InputCustom from "../../Input/InputCustom";
 import { skillService } from "../../service/skill.service";
 import { nguoiDungService } from "../../service/nguoiDung.service";
 import { Select, Space } from "antd";
 import { NotificationContext } from "../../App";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const options = [];
 for (let i = 10; i < 36; i++) {
@@ -35,28 +35,34 @@ const CreateUser = () => {
   // các bước tạo user mới
   const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(true);
-  const [imgUpload, setImgUpload] = useState(null);
+  const [uploadImage, setUploadImage] = useState(null);
   const [errorImage, setErrorImage] = useState("");
   const handleChangeValue = (event) => {
     const { name, value } = event.target;
     setUserValue({ ...userValue, [name]: value });
   };
-  const handelSubmitAvatar = (e) => {
-    e.preventDefault();
-    let formData = new formData();
-    if (imgUpload) {
-      formData.append("formFile", imgUpload.image);
+  const handleSubmitAvatar = (event) => {
+    event.preventDefault();
+    let formData = new FormData();
+    if (uploadImage) {
+      formData.append("formFile", uploadImage.image);
       nguoiDungService
         .uploadAvatar(user.token, formData)
         .then((res) => {
           console.log(res);
+          handleNotification("Upload ảnh thành công", "success");
         })
         .catch((err) => {
           console.log(err);
+          handleNotification(err.response.data.content, "error");
         });
     }
   };
-  const handelSubmitFormCreateUser = (event) => {
+  const handleCancleAvatar = () => {
+    setUploadImage(null);
+    setErrorImage("");
+  };
+  const handleSubmitFormCreateUser = (event) => {
     event.preventDefault();
     console.log(userValue);
     nguoiDungService
@@ -96,7 +102,10 @@ const CreateUser = () => {
     switch (step) {
       case 0:
         return (
-          <form className=" grid gap-5" onSubmit={handelSubmitFormCreateUser}>
+          <form
+            className=" space-y-3 grid gap-5"
+            onSubmit={handleSubmitFormCreateUser}
+          >
             <InputCustom
               contentLabel="Name"
               name="name"
@@ -222,7 +231,6 @@ const CreateUser = () => {
               <button
                 type="submit"
                 className="px-5 py-2 bg-black text-white rounded-md"
-                onSubmit={handelSubmitFormCreateUser}
               >
                 Tạo người dùng
               </button>
@@ -233,11 +241,11 @@ const CreateUser = () => {
         return (
           <div>
             {" "}
-            <form action="" className="space-y-3" onSubmit={handelSubmitAvatar}>
+            <form action="" className="space-y-3" onSubmit={handleSubmitAvatar}>
               <h2> upload hình cho người dùng</h2>
               <div>
                 <label
-                  htmlFor="countries"
+                  htmlFor=""
                   className="block mb-2 text-sm font-medium text-gray-900 "
                 >
                   Upload Image
@@ -246,30 +254,36 @@ const CreateUser = () => {
                   accept="image/png, image/jpeg"
                   type="file"
                   onChange={(event) => {
+                    console.log(event.target.files[0]);
                     const image = event.target.files[0];
 
                     if (image) {
-                      //kiểm tra dung lương hình ảnh
-
-                      if (image.size > 1024 * 1024 * 2) {
-                        setErrorImage("aKích thước vyớt quá dugn lượng");
+                      //kiểm tra dung lượng hình, nếu lớn hơn 10MB thì thông báo lỗi và không nhận hình ảnh
+                      if (image.size > 1024 * 1024 * 1) {
+                        setErrorImage("Hình vượt quá dung lượng cho phép");
                         return;
                       }
                       const imageUrl = URL.createObjectURL(image);
                       console.log(imageUrl);
-                      setImgUpload({ image, imageUrl });
+                      setUploadImage({ image, imageUrl });
+                      setErrorImage("");
                     }
                   }}
                 />
               </div>
               <p className="text-red-500 ">{errorImage}</p>
-              <img src={imgUpload?.imageUrl} alt="" className="w-32" />
+              <img src={uploadImage?.imageUrl} alt="" className="w-32" />
+              <div className=" space-x-5">
               <button
                 type="submit"
                 className="px-5 py-2 bg-green-500 text-white rounded-md"
               >
                 Upload hình ảnh
               </button>
+              <button onClick={handleCancleAvatar} className="px-5 py-2 bg-red-500 text-white rounded-md">
+                  Xóa hình ảnh
+              </button>
+              </div>
             </form>
           </div>
         );

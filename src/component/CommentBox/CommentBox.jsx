@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { congViecChiTietService } from "../../service/congviecchitiet.service";
 import { getCurrentDateTime } from "../../util/utils";
 import { NotificationContext } from "../../App";
+import { useSelector } from "react-redux";
+
 
 const CommentBox = ({ avatar }) => {
   const { handleNotification } = useContext(NotificationContext );
+  const { user } = useSelector((state) => state.authSlice);
 
   const [comment, setComment] = useState({
     maCongViec: 0,
@@ -28,7 +31,7 @@ const CommentBox = ({ avatar }) => {
     if (comment.noiDung.trim()) {
       setComment(comment.noiDung == "");
       congViecChiTietService
-        .binhLuanPost(comment)
+        .binhLuanPost(comment,user.token)
         .then((res) => {
           console.log(res);
           setComment({
