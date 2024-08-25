@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { congViecService } from "../../service/congviec.service";
 import { pathDefault } from "../../common/path";
-
 const ListJobPage = () => {
+  const { jobId } = useParams();
   const [searchParam, setSearchParam] = useSearchParams();
   console.log(searchParam.get("tenCongViec"));
   const [listJob, setListJob] = useState([]);
@@ -19,14 +25,18 @@ const ListJobPage = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [searchParam]);
   const renderListJob = () => {
     return (
       <div className="grid grid-cols-4 gap-5">
         {listJob.map((item) => {
           console.log(item);
           return (
-            <Link to={`${pathDefault.detailListJob}`}>
+            <Link
+              to={`${pathDefault.detailListJob}/${item.congViec.id}
+            `}
+              key={item.congViec.id}
+            >
               <div className="border border-gray-300">
                 <img src={item.congViec.hinhAnh} alt="" className="w-full" />
                 <div className="px-3">
@@ -68,7 +78,7 @@ const ListJobPage = () => {
             </Link>
           );
         })}{" "}
-        </div>
+      </div>
     );
   };
   return <div className="container"> {renderListJob()}</div>;

@@ -3,7 +3,7 @@ import useResponsive from "../../hook/useResponsive";
 import InputCustom from "../../Input/InputCustom";
 import Banner from "../Banner/Banner";
 import IconSearch from "../Icon/IconSearch";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { pathDefault } from "../../common/path";
 import { congViecService } from "../../service/congviec.service";
 import { Dropdown } from "antd";
@@ -22,6 +22,9 @@ const FormSearchProduct = () => {
     event.preventDefault();
     console.log(valueSearch);
     navigate(`${pathDefault.listJob}?tenCongViec=${valueSearch}`);
+    setCheckDropdown(false);
+    // console.log(listJobSuggest)
+    // setListJobSuggest(listJobSuggest)
   };
   useEffect(() => {
     // Gọi API lấy dữ liệu sản phẩm để gợi ý người dùng
@@ -29,27 +32,41 @@ const FormSearchProduct = () => {
       congViecService
         .layCongViecTheoTen(valueSearch)
         .then((res) => {
-     console.log(res)
-          const newListJobSuggest = res.data.content
-            .slice(0, 4)
-            .map((item, index) => {
-              return {
-                key: index.toString(),
-                label: (
-                  <Link
-                    to={`/cong-viec-chi-tiet/${item.id}`}
-                    className="flex items-center space-x-4"
-                  >
-                    <img src={item.congViec.hinhAnh} className="h-14" alt="" />
-                    <div>
-                      <h4>{item.congViec.tenCongViec}</h4>
-                      <p>Price: ${item.congViec.giaTien}.00</p>
-                    </div>
-                  </Link>
-                ),
-              };
-            });
-          setListJobSuggest(newListJobSuggest);
+          console.log(res)
+          if (res.data.content.length > 0) {
+            const newListJobSuggest = res.data.content
+              .slice(0, 4)
+              .map((item, index) => {
+                return {
+                  key: index.toString(),
+                  label: (
+                    <Link
+                      to={`${pathDefault.detailListJob}/${item.id}`}
+                      className="flex items-center space-x-4"
+                    >
+                      <img
+                        src={item.congViec.hinhAnh}
+                        className="h-14"
+                        alt=""
+                      />
+                      <div>
+                        <h4>{item.congViec.tenCongViec}</h4>
+                        <p>Price: ${item.congViec.giaTien}.00</p>
+                      </div>
+                    </Link>
+                  ),
+                };
+              });
+            setListJobSuggest(newListJobSuggest);
+          } else {
+            setListJobSuggest([
+              {
+                key: "not-found",
+                label: <div className="p-4 text-center">Not Found</div>,
+              },
+            ]);
+          }
+
           setCheckDropdown(true);
         })
         .catch((err) => {

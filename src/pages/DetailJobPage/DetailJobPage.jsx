@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { congViecChiTietService } from "../../service/congviecchitiet.service";
 import { Breadcrumb } from "antd";
 import ListJobPage from "../ListJobPage/ListJobPage";
@@ -9,18 +9,21 @@ import CommentBox from "../../component/CommentBox/CommentBox";
 const DetailJobPage = () => {
   const [detailJob, setDetailJob] = useState(null);
   const [comment, setComment] = useState(null);
+  const { jobId } = useParams();
+  console.log(jobId)
   useEffect(() => {
-    congViecChiTietService
-      .layCongViecChiTiet(1)
+    if (jobId) {
+      congViecChiTietService
+      .layCongViecChiTiet(jobId)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.content);
         setDetailJob(res.data.content[0]);
       })
       .catch((err) => {
         console.log(err);
       });
     congViecChiTietService
-      .layBinhLuanTheoCongViec(1)
+      .layBinhLuanTheoCongViec(jobId)
       .then((res) => {
         console.log(res);
         setComment(res.data.content);
@@ -28,7 +31,9 @@ const DetailJobPage = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    }
+    
+  }, [jobId]);
 
   const commentPost = {
     maCongViec: 0,

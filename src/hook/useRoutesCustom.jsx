@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { useRoutes } from "react-router-dom";
+import { useParams, useRoutes } from "react-router-dom";
 import Usertemplate from "../templates/Usertemplate/Usertemplate";
 import { pathDefault } from "../common/path";
 import Register from "../pages/Register/Register";
@@ -11,11 +11,12 @@ import Admintemplate from "../templates/Admintemplate/Admintemplate";
 import CreateUser from "../pages/CreateUser/CreateUser";
 import { Skeleton } from "antd";
 import DetailJobPage from "../pages/DetailJobPage/DetailJobPage";
-
 const ManagerUser = React.lazy(() =>
   import("../pages/ManagerUser/ManagerUser")
 );
 const useRoutesCustom = () => {
+  const { jobId } = useParams();
+
   const routes = useRoutes([
     {
       path: pathDefault.homePage,
@@ -26,7 +27,7 @@ const useRoutesCustom = () => {
           element: <ListJobPage />,
         },
         {
-          path: pathDefault.detailListJob,
+          path: `${pathDefault.detailListJob}/:jobId`,
           element: <DetailJobPage />,
         },
       ],
