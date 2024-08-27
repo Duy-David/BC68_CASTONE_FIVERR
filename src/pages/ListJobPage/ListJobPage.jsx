@@ -32,11 +32,7 @@ const ListJobPage = () => {
         {listJob.map((item) => {
           console.log(item);
           return (
-            <Link
-              to={`${pathDefault.detailListJob}/${item.congViec.id}
-            `}
-              key={item.congViec.id}
-            >
+            <Link to={`${pathDefault.detailListJob.replace(":jobId", item.id)}`} key={item.id}>
               <div className="border border-gray-300">
                 <img src={item.congViec.hinhAnh} alt="" className="w-full" />
                 <div className="px-3">

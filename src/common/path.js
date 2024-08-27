@@ -3,7 +3,7 @@ export const pathDefault={
     register:"/dang-ky",
     login:"/dang-nhap",
     listJob: "/list-job",
-    detailListJob:"/cong-viec/lay-chi-tiet-cong-viec",
+    detailListJob:"/cong-viec/lay-chi-tiet-cong-viec/:jobId",
     admin: "/admin",
 
 }

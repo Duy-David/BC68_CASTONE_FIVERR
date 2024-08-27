@@ -1,0 +1,115 @@
+import React from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import ServiceCard from "../ServiceCard/ServiceCard ";
+import "./PopularService.scss"
+const PopularService = () => {
+  let settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    arrows: true,
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 2,
+    //       initialSlide: 2,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ],
+  };
+  const service = [
+    {
+      title: "Website Development",
+      src: "./src/assets/Png/website-development.png",
+      color: "#1F8447",
+    },
+    {
+      title: "Logo Design",
+      src: "./src/assets/Png/logo-design.png",
+      color: "#FF8757",
+    },
+    { title: "SEO", src: "./src/assets/Png/seo.png", color: "#1F512F" },
+    {
+      title: "Architecture & Interior Design",
+      src: "./src/assets/Png/architecture-design.png",
+      color: "#633341",
+    },
+    {
+      title: "Social Media Marketing",
+      src: "./src/assets/Png/social-media-marketing.png",
+      color: "#7A831F",
+    },
+    {
+      title: "Voice Over",
+      src: "./src/assets/Png/voice-over.png",
+      color: "#59301F",
+    },
+    {
+      title: "Software Development",
+      src: "./src/assets/Png/software-development.png",
+      color: "#40591F",
+    },
+    {
+      title: "Data Science & ML",
+      src: "./src/assets/Png/data-science.png",
+      color: "#8F2900",
+    },
+    {
+      title: "Product Photographers",
+      src: "./src/assets/Png/product-photography.png",
+      color: "#687200",
+    },
+    {
+      title: "E-Commerce Marketing",
+      src: "./src/assets/Png/e-commerce.png",
+      color: "#1F8447",
+    },
+    {
+      title: "Video Editing",
+      src: "./src/assets//Png/video-editing.png",
+      color: "#C66783",
+    },
+  ];
+  return (
+    <div className="container my-20">
+      <h2 class="h2-title text-5xl my-10 font-bold">Popular services</h2>
+      <Slider {...settings}>
+        {service.map((item, index) => {
+          return (
+            <ServiceCard 
+                title={item.title}
+                imageSrc={item.src}
+                bgColor={item.color}
+                key={index}
+              />
+          );
+        })}
+      </Slider>
+    </div>
+  );
+};
+
+export default PopularService;

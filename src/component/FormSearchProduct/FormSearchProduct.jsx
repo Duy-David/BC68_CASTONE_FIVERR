@@ -1,7 +1,4 @@
 import React, { Children, useEffect, useState } from "react";
-import useResponsive from "../../hook/useResponsive";
-import InputCustom from "../../Input/InputCustom";
-import Banner from "../Banner/Banner";
 import IconSearch from "../Icon/IconSearch";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { pathDefault } from "../../common/path";
@@ -10,7 +7,7 @@ import { Dropdown } from "antd";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import useDebounce from "../../hook/useDebounce";
 
-const FormSearchProduct = () => {
+const FormSearchProduct = ({classWrapper}) => {
   const navigate = useNavigate();
   const [valueSearch, setValueSearch] = useState("");
   const [checkDropdown, setCheckDropdown] = useState(false);
@@ -32,7 +29,7 @@ const FormSearchProduct = () => {
       congViecService
         .layCongViecTheoTen(valueSearch)
         .then((res) => {
-          console.log(res)
+          console.log(res);
           if (res.data.content.length > 0) {
             const newListJobSuggest = res.data.content
               .slice(0, 4)
@@ -41,8 +38,12 @@ const FormSearchProduct = () => {
                   key: index.toString(),
                   label: (
                     <Link
-                      to={`${pathDefault.detailListJob}/${item.id}`}
+                      to={`${pathDefault.detailListJob.replace(
+                        ":jobId",
+                        item.id
+                      )}`}
                       className="flex items-center space-x-4"
+                      key={item.id}
                     >
                       <img
                         src={item.congViec.hinhAnh}
@@ -83,8 +84,8 @@ const FormSearchProduct = () => {
     // debounceValue(event.target.value)
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit} className=" ">
+    <>
+      <form onSubmit={handleSubmit} className={classWrapper}>
         <Dropdown
           menu={{
             items: listJobSuggest,
@@ -99,13 +100,13 @@ const FormSearchProduct = () => {
               onChange={handleChange}
               value={valueSearch}
             />
-            <button type="submit" className="p-2">
+            <button type="submit" className="p-2 border-l-2 border-gray-300">
               <IconSearch size={30} color="rgb(156 163 175)" />
             </button>
           </div>
         </Dropdown>
       </form>
-    </div>
+    </>
   );
 };
 
