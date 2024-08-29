@@ -1,18 +1,20 @@
 import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "../../../node_modules/slick-carousel/slick/slick.css";
+import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import ServiceCard from "../ServiceCard/ServiceCard ";
-import "./PopularService.scss"
+import ServiceCard from "../ServiceCard/ServiceCard";
+// import "./PopularService.scss";
 const PopularService = () => {
   let settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     initialSlide: 0,
-    arrows: true,
+    // arrows: true,
+    // pauseOnHover:true,
+    // autoplay:true,
     // responsive: [
     //   {
     //     breakpoint: 1024,
@@ -96,18 +98,20 @@ const PopularService = () => {
   return (
     <div className="container my-20">
       <h2 class="h2-title text-5xl my-10 font-bold">Popular services</h2>
-      <Slider {...settings}>
-        {service.map((item, index) => {
-          return (
-            <ServiceCard 
+      <div className="relative">
+        <Slider {...settings}>
+          {service.map((item, index) => {
+            return (
+              <ServiceCard
                 title={item.title}
                 imageSrc={item.src}
                 bgColor={item.color}
                 key={index}
               />
-          );
-        })}
-      </Slider>
+            );
+          })}
+        </Slider>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,12 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.slick-prev, .slick-next {
+    &::before{
+        font-size: 29px!important;
+        color: black!important;
+    }
+}

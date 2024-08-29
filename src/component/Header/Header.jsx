@@ -7,6 +7,7 @@ import { Dropdown, Space } from "antd";
 import "./header.scss";
 import LinkCustom from "../LinkCustom/LinkCustom";
 import FormSearchProduct from "../FormSearchProduct/FormSearchProduct";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const items = [
   {
     key: "1",
@@ -14,9 +15,11 @@ const items = [
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.antgroup.com"
+        href="#"
+        className="font-bold"
       >
-        1st menu item
+       Discover
+       <p className="font-light">Inspiring projects made on Fiverr</p>
       </a>
     ),
   },
@@ -26,13 +29,13 @@ const items = [
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.aliyun.com"
+        href="#"
+        className="font-bold"
       >
-        2nd menu item (disabled)
+       Community
+       <p className="font-light">Connect with Fiverr’s team and community</p>
       </a>
     ),
-    icon: <SmileOutlined />,
-    disabled: true,
   },
   {
     key: "3",
@@ -40,18 +43,80 @@ const items = [
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
+        href="#"
+        className="font-bold"
       >
-        3rd menu item (disabled)
+       Guides
+       <p className="font-light">In-depth guides covering business topics</p>
       </a>
     ),
-    disabled: true,
   },
   {
     key: "4",
-    danger: true,
-    label: "a danger item",
+    label: (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="#"
+        className="font-bold"
+      >
+       Podcast
+       <p className="font-light">Inside tips from top business minds</p>
+      </a>
+    ),
   },
+  {
+    key: "5",
+    label: (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="#"
+        className="font-bold"
+      >
+       Learn
+       <p className="font-light">Professional online courses, led by experts</p>
+      </a>
+    ),
+  },
+  {
+    key: "6",
+    label: (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="#"
+        className="font-bold"
+      >
+       Blog
+       <p className="font-light">News, information and community stories</p>
+      </a>
+    ),
+  },
+  { 
+    key: "7",
+    label: (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="#"
+        className="font-bold"
+      >
+       Logo Maker
+       <p className="font-light">Create your logo instantly</p>
+      </a>
+    ),
+  },
+
+];
+const items1 = [
+  { key: '1', label: 'Discover', description: 'Inspiring projects made on Fiverr' },
+  { key: '2', label: 'Community', description: 'Connect with Fiverr’s team and community' },
+  { key: '3', label: 'Guides', description: 'In-depth guides covering business topics' },
+  { key: '4', label: 'Podcast', description: 'Inside tips from top business minds' },
+  { key: '5', label: 'Learn', description: 'Professional online courses, led by experts' },
+  { key: '6', label: 'Blog', description: 'News, information and community stories' },
+  { key: '7', label: 'Logo Maker', description: 'Create your logo instantly' },
 ];
 const navLinks = [
   { name: "Fiverr Business", href: "#" },
@@ -95,20 +160,20 @@ const Header = () => {
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
-                  Click me
+                  EXPLORE
                   <DownOutlined />
                 </Space>
               </a>
             </Dropdown>
-            <button>Eng</button>
+            <button> <FontAwesomeIcon icon="fa-solid fa-globe" /> ENGLISH</button>
             <a href="#"> Become a Seller</a>
             <LinkCustom
-              content={"Đăng nhập"}
+              content={"LOGIN"}
               to={pathDefault.login}
               className={"border border-green-500 text-green-500"}
             />
             <LinkCustom
-              content={"Đăng ký"}
+              content={"REGISTER"}
               to={pathDefault.register}
               className={"bg-green-600 text-white"}
             />
