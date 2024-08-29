@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import IconLogoHeader from "../Icon/IconLogoHeader";
 import { Link } from "react-router-dom";
 import { pathDefault } from "../../common/path";
@@ -8,6 +8,8 @@ import "./header.scss";
 import LinkCustom from "../LinkCustom/LinkCustom";
 import FormSearchProduct from "../FormSearchProduct/FormSearchProduct";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
+import { congViecService } from "../../service/congviec.service";
 const items = [
   {
     key: "1",
@@ -18,8 +20,8 @@ const items = [
         href="#"
         className="font-bold"
       >
-       Discover
-       <p className="font-light">Inspiring projects made on Fiverr</p>
+        Discover
+        <p className="font-light">Inspiring projects made on Fiverr</p>
       </a>
     ),
   },
@@ -32,8 +34,8 @@ const items = [
         href="#"
         className="font-bold"
       >
-       Community
-       <p className="font-light">Connect with Fiverr’s team and community</p>
+        Community
+        <p className="font-light">Connect with Fiverr’s team and community</p>
       </a>
     ),
   },
@@ -46,8 +48,8 @@ const items = [
         href="#"
         className="font-bold"
       >
-       Guides
-       <p className="font-light">In-depth guides covering business topics</p>
+        Guides
+        <p className="font-light">In-depth guides covering business topics</p>
       </a>
     ),
   },
@@ -60,8 +62,8 @@ const items = [
         href="#"
         className="font-bold"
       >
-       Podcast
-       <p className="font-light">Inside tips from top business minds</p>
+        Podcast
+        <p className="font-light">Inside tips from top business minds</p>
       </a>
     ),
   },
@@ -74,8 +76,10 @@ const items = [
         href="#"
         className="font-bold"
       >
-       Learn
-       <p className="font-light">Professional online courses, led by experts</p>
+        Learn
+        <p className="font-light">
+          Professional online courses, led by experts
+        </p>
       </a>
     ),
   },
@@ -88,12 +92,12 @@ const items = [
         href="#"
         className="font-bold"
       >
-       Blog
-       <p className="font-light">News, information and community stories</p>
+        Blog
+        <p className="font-light">News, information and community stories</p>
       </a>
     ),
   },
-  { 
+  {
     key: "7",
     label: (
       <a
@@ -102,27 +106,38 @@ const items = [
         href="#"
         className="font-bold"
       >
-       Logo Maker
-       <p className="font-light">Create your logo instantly</p>
+        Logo Maker
+        <p className="font-light">Create your logo instantly</p>
       </a>
     ),
   },
-
 ];
 
-
-const categoryLinks = [
-  "Graphics & Design",
-  "Digital Marketing",
-  "Writing & Translation",
-  "Video & Animation",
-  "Music & Audio",
-  "Programming & Tech",
-  "Business",
-  "Lifestyle",
-  "Trending",
-];
+// const categoryLinks = [
+//   "Graphics & Design",
+//   "Digital Marketing",
+//   "Writing & Translation",
+//   "Video & Animation",
+//   "Music & Audio",
+//   "Programming & Tech",
+//   "Business",
+//   "Lifestyle",
+//   "Trending",
+// ];
 const Header = () => {
+  const [categoryLinks, setCategoryLinks] = useState([]);
+  useEffect(() => {
+    congViecService
+      .layMenuTheoLoaiCongViec()
+      .then((res) => {
+        console.log(res.data.content);
+        setCategoryLinks(res.data.content);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <header className="py-5">
       <div className="container">
@@ -149,7 +164,10 @@ const Header = () => {
                 </Space>
               </a>
             </Dropdown>
-            <button> <FontAwesomeIcon icon="fa-solid fa-globe" /> ENGLISH</button>
+            <button>
+              {" "}
+              <FontAwesomeIcon icon="fa-solid fa-globe" /> ENGLISH
+            </button>
             <a href="#"> Become a Seller</a>
             <LinkCustom
               content={"SIGN IN"}
@@ -161,13 +179,12 @@ const Header = () => {
               to={pathDefault.login}
               className={"border border-green-500 text-green-500"}
             />
-         
           </nav>
         </div>
-        <div className="mt-4 flex justify-between text-gray-700">
+        <div className="mt-4 border-y-2 border-gray-300 py-1 flex justify-between text-gray-700">
           {categoryLinks.map((category, index) => (
             <a key={index} href="#" className="hover:text-green-500">
-              {category}
+              {category.tenLoaiCongViec}
             </a>
           ))}
         </div>
