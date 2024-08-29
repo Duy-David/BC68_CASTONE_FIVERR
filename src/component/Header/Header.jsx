@@ -109,23 +109,7 @@ const items = [
   },
 
 ];
-const items1 = [
-  { key: '1', label: 'Discover', description: 'Inspiring projects made on Fiverr' },
-  { key: '2', label: 'Community', description: 'Connect with Fiverr’s team and community' },
-  { key: '3', label: 'Guides', description: 'In-depth guides covering business topics' },
-  { key: '4', label: 'Podcast', description: 'Inside tips from top business minds' },
-  { key: '5', label: 'Learn', description: 'Professional online courses, led by experts' },
-  { key: '6', label: 'Blog', description: 'News, information and community stories' },
-  { key: '7', label: 'Logo Maker', description: 'Create your logo instantly' },
-];
-const navLinks = [
-  { name: "Fiverr Business", href: "#" },
-  { name: "Explore", href: "#" },
-  { name: "English", href: "#" },
-  { name: "US$ USD", href: "#" },
-  { name: "Become a Seller", href: "#" },
-  { name: "Sign In", href: "#" },
-];
+
 
 const categoryLinks = [
   "Graphics & Design",
@@ -168,15 +152,16 @@ const Header = () => {
             <button> <FontAwesomeIcon icon="fa-solid fa-globe" /> ENGLISH</button>
             <a href="#"> Become a Seller</a>
             <LinkCustom
-              content={"LOGIN"}
-              to={pathDefault.login}
-              className={"border border-green-500 text-green-500"}
-            />
-            <LinkCustom
-              content={"REGISTER"}
+              content={"SIGN IN"}
               to={pathDefault.register}
               className={"bg-green-600 text-white"}
             />
+            <LinkCustom
+              content={"JOIN"}
+              to={pathDefault.login}
+              className={"border border-green-500 text-green-500"}
+            />
+         
           </nav>
         </div>
         <div className="mt-4 flex justify-between text-gray-700">

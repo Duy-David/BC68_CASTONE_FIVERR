@@ -8,12 +8,14 @@ import ECommerceProject from "../../component/ECommerceProject/ECommerceProject"
 import LogoMaker from "../../component/LogoMaker/LogoMaker";
 import Guides from "../../component/Guides/Guides";
 import About from "../../component/About/About";
+import Viewed from "../../component/Viewed/Viewed";
 
 const HomePage = () => {
   return (
     <div>
       <Banner/>
       <Categories />
+      <Viewed/>
       <PopularService/>
       <FeaturesSection/>
       <VideoPlayer/>

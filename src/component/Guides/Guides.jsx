@@ -73,7 +73,7 @@ const Guides = () => {
   ];
   return (
     <div className="container mt-20">
-      <h2 class=" ">Guides to help you grow</h2>
+      <h2 class="text-6xl font-normal mb-10 ">Guides to help you grow</h2>
       <div className="relative">
         <Slider {...settings}>
           {guides.map((item, index) => {
