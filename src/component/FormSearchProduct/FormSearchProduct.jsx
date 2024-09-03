@@ -95,8 +95,7 @@ const FormSearchProduct = ({classWrapper}) => {
           <div className="pl-4 rounded-lg border border-gray-400 flex items-center justify-between min-w-[400px]">
             <input
               type="text"
-              placeholder="Vui lòng nhập công việc cần tìm kiếm"
-              className="flex-1 focus:border-none focus:outline-none"
+              placeholder="What service are you looking for today?"              className="flex-1 focus:border-none focus:outline-none"
               onChange={handleChange}
               value={valueSearch}
             />

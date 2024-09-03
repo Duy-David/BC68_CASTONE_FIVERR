@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Categories from "../../component/Categories/Categories";
 import PopularService from "../../component/PopularService/PopularService";
 import Banner from "../../component/Banner/Banner";
@@ -11,8 +11,11 @@ import About from "../../component/About/About";
 import Viewed from "../../component/Viewed/Viewed";
 
 const HomePage = () => {
+
+
   return (
     <div>
+
       <Banner/>
       <Categories />
       <Viewed/>

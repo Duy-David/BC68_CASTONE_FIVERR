@@ -1,0 +1,59 @@
+import React, { useEffect, useState } from "react";
+import { congViecService } from "../../service/congviec.service";
+import { Menu, Dropdown, Space } from "antd";
+
+const CategoriesJob = () => {
+  const [categoryLinks, setCategoryLinks] = useState([]);
+
+  useEffect(() => {
+    congViecService
+      .layMenuTheoLoaiCongViec()
+      .then((res) => {
+        console.log(res.data.content);
+        setCategoryLinks(res.data.content);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const getMenuItems = (category) => {
+    return category.dsNhomChiTietLoai.map((item, itemIndex) => ({
+      key: itemIndex,
+      label: (
+        <div className="flex flex-col">
+          <span className="font-bold">{item.tenNhom}</span>
+          {item.dsChiTietLoai.map((subItem, subItemIndex) => (
+            <span key={subItemIndex} className="text-sm ml-4">
+              {subItem.tenChiTiet}
+            </span>
+          ))}
+        </div>
+      ),
+    }));
+  };
+
+  return (
+    <div className="my-4 border-y-2 border-gray-300 text-gray-700">
+      <div className="container py-1">
+        <Space direction="horizontal" className="flex justify-between">
+          {categoryLinks.map((category, index) => (
+            <Dropdown
+              key={index}
+              menu={{
+                items: getMenuItems(category),
+              }}
+              placement="bottomLeft"
+            >
+              <div className="hover:cursor-pointer whitespace-nowrap">
+                {category.tenLoaiCongViec}
+              </div>
+            </Dropdown>
+          ))}
+        </Space>
+      </div>
+    </div>
+  );
+};
+
+export default CategoriesJob;
