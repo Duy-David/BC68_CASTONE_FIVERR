@@ -1,8 +1,9 @@
 import React from "react";
 import "./footer.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-;
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t, i18n } = useTranslation();
   const footerData = [
     {
       title: "Categories",
@@ -88,11 +89,11 @@ const Footer = () => {
       <div className="footer-content container">
         {footerData.map((section, index) => (
           <div key={index} className="footer-section">
-            <h4>{section.title}</h4>
+            <h4>{t(section.title)}</h4>
             <ul>
               {section.links.map((link, idx) => (
                 <li key={idx}>
-                  <a href="#">{link}</a>
+                  <a href="#">{t(link)}</a>
                 </li>
               ))}
             </ul>

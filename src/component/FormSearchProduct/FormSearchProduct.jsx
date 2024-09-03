@@ -6,8 +6,10 @@ import { congViecService } from "../../service/congviec.service";
 import { Dropdown } from "antd";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import useDebounce from "../../hook/useDebounce";
+import { useTranslation } from "react-i18next";
 
 const FormSearchProduct = ({classWrapper}) => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [valueSearch, setValueSearch] = useState("");
   const [checkDropdown, setCheckDropdown] = useState(false);
@@ -95,7 +97,7 @@ const FormSearchProduct = ({classWrapper}) => {
           <div className="pl-4 rounded-lg border border-gray-400 flex items-center justify-between min-w-[400px]">
             <input
               type="text"
-              placeholder="What service are you looking for today?"              className="flex-1 focus:border-none focus:outline-none"
+              placeholder={t("What service are you looking for today?")}              className="flex-1 focus:border-none focus:outline-none"
               onChange={handleChange}
               value={valueSearch}
             />

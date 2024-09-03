@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
 const About = () => {
   const [playingVideoIndex, setPlayingVideoIndex] = useState(null);
@@ -19,7 +20,7 @@ const About = () => {
       company: "Caitlin Tormey, Chief Commercial Officer",
       commnet:
         "We've used Fiverr for Shopify web development, graphic design, and backend web development. Working with Fiverr makes my job a little easier every day.",
-      logoImg: "./src/assets/Png/naadam-logo-x2.a79031d.png",
+      logoImg: "./src/assets/Png /naadam-logo-x2.a79031d.png",
       imgPlay: "./src/assets/JPG/desktop-play-button.bab1740.jpg",
       video: "../src/assets/Video/plfa6gdjihpdvr10rchl.mp4",
       imgAvatar: "./src/assets/JPG/testimonial-video-still-naadam.jpg",
@@ -85,10 +86,12 @@ const About = () => {
     //   },
     // ],
   };
+  const { t, i18n } = useTranslation()
   return (
+    
     <div className="container">
       <h2 className="h2-title text-5xl my-10 font-bold">
-        What they're saying about Fiverr
+      {t("What they're saying about Fiverr")}
       </h2>
       <Slider {...settings}>
         {about.map((item, index) => {
@@ -132,7 +135,7 @@ const About = () => {
                   <div className="w-full md:w-1/2 md:pl-8">
                     <p className="text-lg text-gray-500  font-normal mb-2">
                       <span className="mr-2">
-                      {item.company}</span>|
+                      {t(item.company)}</span>|
                       <span className="ml-2">
                         <img
                           src={item.logoImg}
@@ -142,7 +145,7 @@ const About = () => {
                       </span>
                     </p>
                     <p className="italic text-2xl font-semibold text-[#003912] ">
-                      "{item.commnet}"
+                      "{t(item.commnet)}"
                     </p>
                   </div>
                 </div>

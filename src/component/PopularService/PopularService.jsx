@@ -3,8 +3,12 @@ import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import ServiceCard from "../ServiceCard/ServiceCard";
+import { useTranslation } from "react-i18next";
 // import "./PopularService.scss";
+
 const PopularService = () => {
+  const { t, i18n } = useTranslation()
+
   let settings = {
     dots: false,
     infinite: false,
@@ -103,7 +107,7 @@ const PopularService = () => {
           {service.map((item, index) => {
             return (
               <ServiceCard
-                title={item.title}
+                title={t(item.title)}
                 imageSrc={item.src}
                 bgColor={item.color}
                 key={index}

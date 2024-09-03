@@ -3,6 +3,7 @@ import CategorieIcon from "../Icon/FeaturesIcon/CategorieIcon";
 import LightningIcon from "../Icon/FeaturesIcon/LightningIcon";
 import SupportIcon from "../Icon/FeaturesIcon/SupportIcon";
 import HandShakeIcon from "../Icon/FeaturesIcon/HandShakeIcon";
+import { useTranslation } from "react-i18next";
 
 const FeaturesSection = () => {
   const sizeIcon = 32;
@@ -32,19 +33,19 @@ const FeaturesSection = () => {
         "Chat with our team to get your questions answered or resolve any issues with your orders.",
     },
   ];
-
+  const { t, i18n } = useTranslation()
   return (
     <div className="text-left py-16 container">
-      <h2 className="text-6xl font-normal mb-10">
-        <p>A whole world of freelance</p>
-        <p>talent at your fingertips</p>
+      <h2 className="h2-title text-5xl my-10 font-bold">
+      <p>{t("A whole world of freelance")}</p>
+      <p>{t("talent at your fingertips")}</p>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {features.map((feature, index) => (
           <div key={index} className="flex flex-col items-left">
             <div className="mb-4">{feature.icon}</div>
-            <h3 className="text-2xl font-normal mb-2 h-20">{feature.title}</h3>
-            <p className="text-gray-600">{feature.description}</p>
+            <h3 className="text-2xl font-normal mb-2 h-20">{t(feature.title)}</h3>
+            <p className="text-gray-600">{t(feature.description)}</p>
           </div>
         ))}
       </div>

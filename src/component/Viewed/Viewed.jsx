@@ -59,8 +59,8 @@ const Viewed = () => {
   console.log(listJob);
   return (
     <div className="container my-16">
-      <h2 className="text-6xl font-normal mb-10 ">Recently Viewed & More </h2>
-      <Slider {...settings}>
+      <h2 className=" h2-title text-5xl my-10 font-bold">Recently Viewed & More </h2>
+      <Slider font-normal mb-10 {...settings}>
         {listJob.map((item, index) => {
           return (
             <div className=" rounded-lg overflow-hidden px-4 h-96" key={index}>

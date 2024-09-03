@@ -33,8 +33,8 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          Discover
-          <p className="font-light">Inspiring projects made on Fiverr</p>
+         {t("Discover")}
+         <p className="font-light">{t("Inspiring projects made on Fiverr")}</p>
         </a>
       ),
     },
@@ -47,8 +47,10 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          Community
-          <p className="font-light">Connect with Fiverr’s team and community</p>
+          {t("Community")} 
+          <p className="font-light">
+          {t("Connect with Fiverr’s team and community")}
+          </p>
         </a>
       ),
     },
@@ -61,8 +63,8 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          Guides
-          <p className="font-light">In-depth guides covering business topics</p>
+          {t("Guides")}
+          <p className="font-light">{t("In-depth guides covering business topics")}</p>
         </a>
       ),
     },
@@ -75,8 +77,9 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          Podcast
-          <p className="font-light">Inside tips from top business minds</p>
+          {t("Podcast")}
+          
+          <p className="font-light">{t("Inside tips from top business minds")}</p>
         </a>
       ),
     },
@@ -89,9 +92,8 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          Learn
-          <p className="font-light">
-            Professional online courses, led by experts
+         {t("Learn")}           <p className="font-light">
+         {t(" Professional online courses, led by experts")}  
           </p>
         </a>
       ),
@@ -105,8 +107,8 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          Blog
-          <p className="font-light">News, information and community stories</p>
+        {t("Blog")} 
+          <p className="font-light">{t("News, information and community stories")}</p>
         </a>
       ),
     },
@@ -119,8 +121,8 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          Logo Maker
-          <p className="font-light">Create your logo instantly</p>
+          {t("Logo Maker")}
+          <p className="font-light">{t("Create your logo instantly")}</p>
         </a>
       ),
     },
@@ -133,11 +135,9 @@ const Header = () => {
           <div className="flex items-center gap-5">
             <IconFiverrPro />
             <div>
-              <p className="font-bold text-lg">I'm looking to hire</p>
+              <p className="font-bold text-lg">{t("I'm looking to hire")}</p>
               <p className="text-gray-500">
-                My team needs vetted freelance talent
-                <br />
-                and a premium business solution.
+              {t("My team needs vetted freelance talent and a premium business solution.")}
               </p>
             </div>
           </div>
@@ -151,10 +151,9 @@ const Header = () => {
           <div className="flex items-center gap-5">
             <IconFiverrPro2 />
             <div>
-              <p className="font-bold text-lg">I want to offer Pro services</p>
+              <p className="font-bold  text-lg">{t("I want to offer Pro services")}</p>
               <p className="text-gray-500">
-                I'd like to work on business projects as a<br />
-                Pro freelancer or agency
+              {t("I'd like to work on business projects as a Pro freelancer or agency")}
               </p>
             </div>
           </div>
@@ -240,7 +239,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white">
-      <div className="container py-5">
+      <div className="container py-3">
         <div className="header-content flex justify-between items-center">
           <div className="header-logo flex items-center space-x-4">
             <Link to={pathDefault.homePage}>
@@ -261,7 +260,7 @@ const Header = () => {
                 items: itemsFiverrPro,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3 px-4Popular services duration-300 rounded-md"
+              className="cursor-pointer py-3 Popular services duration-300 rounded-md"
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
@@ -276,11 +275,11 @@ const Header = () => {
                 items,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3 px-4Popular services duration-300 rounded-md"
+              className="cursor-pointer py-3  Popular hover:bg-gray-100 services duration-300 rounded-md"
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
-                  Explore
+                  {t("Explore")}
                   <DownOutlined />
                 </Space>
               </a>
@@ -290,12 +289,12 @@ const Header = () => {
                 items: itemsLanguage,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3 px-4Popular services duration-300 rounded-md"
+              className="cursor-pointer py-3 hover:bg-gray-100 Popular services duration-300 rounded-md"
             >
               <a onClick={(e) => e.preventDefault()}>
-                <FontAwesomeIcon icon="fa-solid fa-globe" className="px-2" />
+                <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
                 <Space>
-                  <button>English</button>
+                  <button>{t("English")}</button>
                   {/* <DownOutlined /> */}
                 </Space>
               </a>

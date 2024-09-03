@@ -9,9 +9,11 @@ import IconMusic from "../Icon/Categories/IconMusic";
 import IconBussiness from "../Icon/Categories/IconBussiness";
 import IconCosulting from "../Icon/Categories/IconCosulting";
 import "./Categories.scss"
+import { useTranslation } from "react-i18next";
 
 const Categories = () => {
   const size="20"
+  const { t, i18n } = useTranslation();
   const categories = [
     { icon: <IconProgamming size={size}/>, title: "Programming & Tech" },
     { icon: <IconGraphic size={size}/>, title: "Graphics & Design" },
@@ -33,7 +35,7 @@ const Categories = () => {
           >
             <div className="mb-4 QIkI1k0">{item.icon}</div>
             {/* <img src={item.icon} alt={item.title} /> */}
-            <h3 className="text-sm font-semibold">{item.title}</h3>
+            <h3 className="text-sm font-semibold">{t(item.title)}</h3>
           </div>
         );
       })}

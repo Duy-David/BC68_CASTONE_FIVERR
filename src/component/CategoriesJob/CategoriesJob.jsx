@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { congViecService } from "../../service/congviec.service";
 import { Menu, Dropdown, Space } from "antd";
+import { useTranslation } from "react-i18next";
 
 const CategoriesJob = () => {
   const [categoryLinks, setCategoryLinks] = useState([]);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     congViecService
@@ -25,7 +27,7 @@ const CategoriesJob = () => {
           <span className="font-bold">{item.tenNhom}</span>
           {item.dsChiTietLoai.map((subItem, subItemIndex) => (
             <span key={subItemIndex} className="text-sm ml-4">
-              {subItem.tenChiTiet}
+              {t(subItem.tenChiTiet)}
             </span>
           ))}
         </div>
