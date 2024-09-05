@@ -6,6 +6,7 @@ import { Select, Space } from "antd";
 import { NotificationContext } from "../../App";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 const options = [];
 for (let i = 10; i < 36; i++) {
@@ -18,6 +19,7 @@ for (let i = 10; i < 36; i++) {
 const CreateUser = () => {
   const { handleNotification } = useContext(NotificationContext);
   // cập nhật list skill
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.authSlice);
   const [listSKill, setListSKill] = useState([]);
   // state quản lý value của 1 object
@@ -33,7 +35,7 @@ const CreateUser = () => {
     certification: [],
   });
   // các bước tạo user mới
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [isActive, setIsActive] = useState(true);
   const [uploadImage, setUploadImage] = useState(null);
   const [errorImage, setErrorImage] = useState("");
@@ -51,6 +53,7 @@ const CreateUser = () => {
         .then((res) => {
           console.log(res);
           handleNotification("Upload ảnh thành công", "success");
+            navigate("/admin");
         })
         .catch((err) => {
           console.log(err);
@@ -277,12 +280,14 @@ const CreateUser = () => {
               <button
                 type="submit"
                 className="px-5 py-2 bg-green-500 text-white rounded-md"
+                // to="/admin"
               >
                 Upload hình ảnh
               </button>
               <button onClick={handleCancleAvatar} className="px-5 py-2 bg-red-500 text-white rounded-md">
                   Xóa hình ảnh
               </button>
+              {/* <button ></button> */}
               </div>
             </form>
           </div>

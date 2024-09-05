@@ -14,7 +14,7 @@ const HomePage = () => {
 
 
   return (
-    <div>
+    <>
 
       <Banner/>
       <Categories />
@@ -26,7 +26,7 @@ const HomePage = () => {
       <About/>
       <LogoMaker/>
       <Guides/>
-    </div>
+    </>
   );
 };
 

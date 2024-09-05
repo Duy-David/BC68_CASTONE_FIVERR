@@ -12,11 +12,16 @@ import CreateUser from "../pages/CreateUser/CreateUser";
 import { Skeleton } from "antd";
 import DetailJobPage from "../pages/DetailJobPage/DetailJobPage";
 import HomePage from "../pages/Home/HomePage";
+import { CreateJob } from "../pages/CreateJob/CreateJob";
+// import ManagerJob from "../pages/ManagerJob/ManagerJob";
 const ManagerUser = React.lazy(() =>
   import("../pages/ManagerUser/ManagerUser")
 );
+const ManagerJob = React.lazy(() =>
+  import("../pages/ManagerJob/ManagerJob")
+);
 const useRoutesCustom = () => {
-  const { jobId } = useParams();
+  // const { jobId } = useParams();
 
   const routes = useRoutes([
     {
@@ -68,6 +73,22 @@ const useRoutesCustom = () => {
           path: "create-user",
           element: <CreateUser />,
         },
+
+        {
+          path: "manager-job",
+          index: true,
+          element: (
+            <Suspense fallback={<Skeleton />}>
+              {/*  <Suspense fallback={<div>...Loading</div>}> */}
+              <ManagerJob />
+            </Suspense>
+          ),
+        },
+        {
+          path: "create-job",
+          element: <CreateJob />,
+        },
+
       ],
     },
     {

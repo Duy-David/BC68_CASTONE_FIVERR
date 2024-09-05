@@ -34,17 +34,17 @@ const Admintemplate = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={[""]}
           items={[
             {
               key: "1",
               icon: <UserOutlined />,
-              label: <Link to={"/admin/manager-user"}>Người dùng</Link>,
+              label: <Link to={"/admin/manager-user"}> Quản lý người dùng</Link>,
             },
             {
               key: "2",
               icon: <VideoCameraOutlined />,
-              label: <Link>Công Việc</Link>,
+              label: <Link to={"/admin/manager-job"}> Quản lý Công Việc</Link>,
             },
             {
               key: "3",

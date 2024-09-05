@@ -6,12 +6,14 @@ import { nguoiDungService } from "../../service/nguoiDung.service";
 import { NotificationContext } from "../../App";
 import InputCustom from "../../Input/InputCustom";
 import { useFormik } from "formik";
-import * as yup from "yup"
+import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 //thực hiện tạo một servce dùng để quản lý các API về gười dùng
 //Cấu hình lại phương thức dùng để xóa trong người dùng trong hệ thống (khi gọi tới phương thức cần truyền id của nugười dùng đang muống xóa)
 //Sâu khi cấu hình phương thức  quay trở lại componet manerger và xử lý tạo sự kiênclick tương tác
 const ManagerUser = () => {
+  const navigate = useNavigate()
   const { handleNotification } = useContext(NotificationContext);
   const dispatch = useDispatch();
   const { listUsers } = useSelector((state) => state.nguoiDungSlice);
@@ -250,6 +252,20 @@ const ManagerUser = () => {
     },
   ];
 
-  return <Table columns={columns} dataSource={listUsers} />;
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-5">
+        <h2 className="text-4xl font-bold">Quản lý người dùng</h2>
+        <button
+           onClick={() => navigate("/admin/create-user")}
+          className="bg-blue-500 text-white py-2 px-5 rounded-md hover:bg-blue-500/90"
+          
+        >
+          Thêm người dùng
+        </button>
+      </div>
+      <Table columns={columns} dataSource={listUsers} />;
+    </div>
+  );
 };
 export default ManagerUser;
