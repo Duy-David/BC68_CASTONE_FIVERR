@@ -26,12 +26,12 @@ const Categories = () => {
     { icon: <IconCosulting size={size} />, title: "Consulting" },
   ];
   return (
-    <div className="container flex justify-center gap-4 mt-5 DTwxxPA">
+    <div className="container grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9 gap-4 mt-5 DTwxxPA">
       {categories.map((item, index) => {
         return (
           <div
             key={index}
-            className="bg-white p-5 rounded-xl shadow-lg w-1/2 h-32 items-left text-left rleRWUb"
+            className="cursor-pointer bg-white p-5 rounded-xl shadow-lg items-left text-left rleRWUb"
           >
             <div className="mb-4 QIkI1k0">{item.icon}</div>
             {/* <img src={item.icon} alt={item.title} /> */}
