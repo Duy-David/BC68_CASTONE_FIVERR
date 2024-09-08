@@ -36,7 +36,7 @@ const CategoriesJob = () => {
   };
 
   return (
-    <div className="border-b border-gray-300 text-gray-700 sm:px-5 lg:px-20">
+    <div className="home_category_links border-b border-gray-300 text-gray-700 sm:px-5 lg:px-20">
       <div className="container py-1">
         <Space direction="horizontal" className="flex justify-between">
           {categoryLinks.map((category, index) => (
@@ -47,7 +47,7 @@ const CategoriesJob = () => {
               }}
               placement="bottomLeft"
             >
-              <div className="hover:cursor-pointer whitespace-nowrap">
+              <div className="hover:cursor-pointer whitespace-nowrap hover:text-green-600">
                 {category.tenLoaiCongViec}
               </div>
             </Dropdown>

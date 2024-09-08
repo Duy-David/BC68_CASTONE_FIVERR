@@ -8,25 +8,25 @@ import IconAI from "../Icon/Categories/IconAI";
 import IconMusic from "../Icon/Categories/IconMusic";
 import IconBussiness from "../Icon/Categories/IconBussiness";
 import IconCosulting from "../Icon/Categories/IconCosulting";
-import "./Categories.scss"
+import "./Categories.scss";
 import { useTranslation } from "react-i18next";
 
 const Categories = () => {
-  const size="20"
+  const size = "20";
   const { t, i18n } = useTranslation();
   const categories = [
-    { icon: <IconProgamming size={size}/>, title: "Programming & Tech" },
-    { icon: <IconGraphic size={size}/>, title: "Graphics & Design" },
-    { icon: <IconDigital size={size}/>, title: "Digital Marketing" },
-    { icon: <IconWriting size={size}/>, title: "Writing & Translation" },
-    { icon: <IconVideo size={size}/>, title: "Video & Animation" },
-    { icon: <IconAI size={size}/>, title: "AI Services" },
-    { icon: <IconMusic size={size}/>, title: "Music & Audio" },
-    { icon: <IconBussiness size={size}/>, title: "Business" },
-    { icon: <IconCosulting size={size}/>, title: "Consulting" },
+    { icon: <IconProgamming size={size} />, title: "Programming & Tech" },
+    { icon: <IconGraphic size={size} />, title: "Graphics & Design" },
+    { icon: <IconDigital size={size} />, title: "Digital Marketing" },
+    { icon: <IconWriting size={size} />, title: "Writing & Translation" },
+    { icon: <IconVideo size={size} />, title: "Video & Animation" },
+    { icon: <IconAI size={size} />, title: "AI Services" },
+    { icon: <IconMusic size={size} />, title: "Music & Audio" },
+    { icon: <IconBussiness size={size} />, title: "Business" },
+    { icon: <IconCosulting size={size} />, title: "Consulting" },
   ];
   return (
-    <div className=" container flex justify-center gap-4 mt-5 DTwxxPA">
+    <div className="container flex justify-center gap-4 mt-5 DTwxxPA">
       {categories.map((item, index) => {
         return (
           <div

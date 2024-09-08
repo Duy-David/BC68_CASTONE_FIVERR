@@ -4,13 +4,13 @@ import Footer from "../../component/Footer/Footer";
 import { Outlet } from "react-router-dom";
 import Banner from "../../component/Banner/Banner";
 import HomePage from "../../pages/Home/HomePage";
-import "./fonts.scss";
+import "./user-template.scss";
 
 const Usertemplate = () => {
   return (
     <div className="container mx-auto">
       <Header />
-      <main className="sm:px-5 lg:px-20">
+      <main className="px-3 sm:px-5 lg:px-20">
         {/*  */}
         <Outlet />
       </main>

@@ -239,7 +239,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-40 mb-10 bg-white font-macan semibold">
-      <div className="container py-4 sm:px-5 lg:px-20 border-b border-gray-300">
+      <div className="container py-4 px-3 sm:px-5 lg:px-20 border-b border-gray-300">
         <div className="header-content flex justify-between items-center">
           <div className="header-logo flex items-center space-x-4">
             <Link to={pathDefault.homePage}>
