@@ -11,21 +11,18 @@ import About from "../../component/About/About";
 import Viewed from "../../component/Viewed/Viewed";
 
 const HomePage = () => {
-
-
   return (
     <>
-
-      <Banner/>
+      <Banner />
       <Categories />
-      <Viewed/>
-      <PopularService/>
-      <FeaturesSection/>
-      <VideoPlayer/>
-      <ECommerceProject/>
-      <About/>
-      <LogoMaker/>
-      <Guides/>
+      <Viewed />
+      <PopularService />
+      <FeaturesSection />
+      <VideoPlayer />
+      <ECommerceProject />
+      <About />
+      <LogoMaker />
+      <Guides />
     </>
   );
 };

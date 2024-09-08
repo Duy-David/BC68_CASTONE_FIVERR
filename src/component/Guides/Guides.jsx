@@ -74,10 +74,12 @@ const Guides = () => {
       title: "Create a logo for your business",
     },
   ];
-   const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
   return (
     <div className="container mt-20">
-      <h2 class="h2-title text-5xl my-10 font-bold ">Guides to help you grow</h2>
+      <h2 class="h2-title text-5xl my-10 font-bold ">
+        Guides to help you grow
+      </h2>
       <div className="relative">
         <Slider {...settings}>
           {guides.map((item, index) => {
@@ -92,11 +94,17 @@ const Guides = () => {
       </div>
       <div className="bg-[#4c1a24] text-white text-center px-8 py-10 rounded-lg my-10">
         <h3 className="text-2xl md:text-6xl font-medium mb-14">
-          Freelance services at {" "}
-          <span className="text-[#e54a0a]"> your fingertips!</span>
+          Freelance services at{" "}
+          <span className="font-ddisplay text-[#e54a0a]">
+            {" "}
+            your fingertips!
+          </span>
         </h3>
-        <Link className="bg-white text-[#4c1a24] py-2 px-4 rounded-lg font-bold hover:bg-[#e54a0a] hover:text-white transition duration-300" to={pathDefault.login} >
-         {t("Join Fiverr")} 
+        <Link
+          className="bg-white text-[#4c1a24] py-2 px-4 rounded-lg font-bold hover:bg-[#e54a0a] hover:text-white transition duration-300"
+          to={pathDefault.login}
+        >
+          {t("Join Fiverr")}
         </Link>
       </div>
     </div>

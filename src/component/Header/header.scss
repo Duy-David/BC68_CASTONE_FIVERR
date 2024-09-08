@@ -1,3 +1,15 @@
-header .ant-dropdown-open svg {
-    transform: rotate(180deg);
+header {
+  svg {
+    transition: all 0.3s;
+  }
+  nav {
+    a {
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    // fix antd
+    .ant-dropdown-open:not(.notRotate) svg {
+      transform: rotate(180deg);
+    }
+  }
 }

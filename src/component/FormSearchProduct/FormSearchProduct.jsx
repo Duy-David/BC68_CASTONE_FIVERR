@@ -8,7 +8,7 @@ import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import useDebounce from "../../hook/useDebounce";
 import { useTranslation } from "react-i18next";
 
-const FormSearchProduct = ({classWrapper}) => {
+const FormSearchProduct = ({ classWrapper }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [valueSearch, setValueSearch] = useState("");
@@ -94,15 +94,19 @@ const FormSearchProduct = ({classWrapper}) => {
           }}
           open={checkDropdown}
         >
-          <div className="pl-4 rounded-lg border border-gray-400 flex items-center justify-between min-w-[400px]">
+          <div className="notRotate pl-4 rounded-lg border border-gray-400 flex items-center justify-between min-w-[400px]">
             <input
               type="text"
-              placeholder={t("What service are you looking for today?")}              className="flex-1 focus:border-none focus:outline-none"
+              placeholder={t("What service are you looking for today?")}
+              className="flex-1 focus:border-none focus:outline-none"
               onChange={handleChange}
               value={valueSearch}
             />
-            <button type="submit" className="p-2 border-l-2 border-gray-300">
-              <IconSearch size={30} color="rgb(156 163 175)" />
+            <button
+              type="submit"
+              className="px-3 py-2 rounded-e-lg bg-black hover:bg-black/70"
+            >
+              <IconSearch size={30} color="rgb(240 240 240)" />
             </button>
           </div>
         </Dropdown>

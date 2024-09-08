@@ -1,21 +1,22 @@
-import React from 'react'
-import Header from '../../component/Header/Header'
-import Footer from '../../component/Footer/Footer'
-import { Outlet } from 'react-router-dom'
-import Banner from '../../component/Banner/Banner'
-import HomePage from '../../pages/Home/HomePage'
+import React from "react";
+import Header from "../../component/Header/Header";
+import Footer from "../../component/Footer/Footer";
+import { Outlet } from "react-router-dom";
+import Banner from "../../component/Banner/Banner";
+import HomePage from "../../pages/Home/HomePage";
+import "./fonts.scss";
 
 const Usertemplate = () => {
   return (
-    <>
-        <Header/>
-        <main>
-          {/*  */}
-          <Outlet/>
-        </main>
-        <Footer/>
-    </>
-  )
-}
+    <div className="container mx-auto">
+      <Header />
+      <main className="sm:px-5 lg:px-20">
+        {/*  */}
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-export default Usertemplate
+export default Usertemplate;

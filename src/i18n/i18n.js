@@ -207,7 +207,7 @@ const resources = {
       Learn: " Học tập",
       "Professional online courses, led by experts":
         "Các khóa học trực tuyến chuyên nghiệp, do các chuyên gia dẫn dắt",
-      Blog: "Thảo luận",
+      Blog: "Bài viết",
       "News, information and community stories":
         "Tin tức, thông tin và các câu chuyện cộng đồng",
       "Logo Maker": " Trình tạo Logo",

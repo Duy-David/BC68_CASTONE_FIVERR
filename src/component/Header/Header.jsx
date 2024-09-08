@@ -17,10 +17,9 @@ import IconFiverrPro2 from "../Icon/IconFiverrPro2";
 import { useTranslation } from "react-i18next";
 // import { changeLanguage } from "i18next";
 
-
 const Header = () => {
   const { t, i18n } = useTranslation();
-  const changeLanguage = (lng = 'en'|'vn') => {
+  const changeLanguage = (lng = "en" | "vn") => {
     i18n.changeLanguage(lng);
   };
   const items = [
@@ -33,8 +32,8 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-         {t("Discover")}
-         <p className="font-light">{t("Inspiring projects made on Fiverr")}</p>
+          {t("Discover")}
+          <p className="font-light">{t("Inspiring projects made on Fiverr")}</p>
         </a>
       ),
     },
@@ -47,9 +46,9 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-          {t("Community")} 
+          {t("Community")}
           <p className="font-light">
-          {t("Connect with Fiverr’s team and community")}
+            {t("Connect with Fiverr’s team and community")}
           </p>
         </a>
       ),
@@ -64,7 +63,9 @@ const Header = () => {
           className="font-bold"
         >
           {t("Guides")}
-          <p className="font-light">{t("In-depth guides covering business topics")}</p>
+          <p className="font-light">
+            {t("In-depth guides covering business topics")}
+          </p>
         </a>
       ),
     },
@@ -78,8 +79,10 @@ const Header = () => {
           className="font-bold"
         >
           {t("Podcast")}
-          
-          <p className="font-light">{t("Inside tips from top business minds")}</p>
+
+          <p className="font-light">
+            {t("Inside tips from top business minds")}
+          </p>
         </a>
       ),
     },
@@ -92,8 +95,9 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-         {t("Learn")}           <p className="font-light">
-         {t(" Professional online courses, led by experts")}  
+          {t("Learn")}{" "}
+          <p className="font-light">
+            {t(" Professional online courses, led by experts")}
           </p>
         </a>
       ),
@@ -107,8 +111,10 @@ const Header = () => {
           href="#"
           className="font-bold"
         >
-        {t("Blog")} 
-          <p className="font-light">{t("News, information and community stories")}</p>
+          {t("Blog")}
+          <p className="font-light">
+            {t("News, information and community stories")}
+          </p>
         </a>
       ),
     },
@@ -137,7 +143,9 @@ const Header = () => {
             <div>
               <p className="font-bold text-lg">{t("I'm looking to hire")}</p>
               <p className="text-gray-500">
-              {t("My team needs vetted freelance talent and a premium business solution.")}
+                {t(
+                  "My team needs vetted freelance talent and a premium business solution."
+                )}
               </p>
             </div>
           </div>
@@ -151,9 +159,13 @@ const Header = () => {
           <div className="flex items-center gap-5">
             <IconFiverrPro2 />
             <div>
-              <p className="font-bold  text-lg">{t("I want to offer Pro services")}</p>
+              <p className="font-bold  text-lg">
+                {t("I want to offer Pro services")}
+              </p>
               <p className="text-gray-500">
-              {t("I'd like to work on business projects as a Pro freelancer or agency")}
+                {t(
+                  "I'd like to work on business projects as a Pro freelancer or agency"
+                )}
               </p>
             </div>
           </div>
@@ -161,27 +173,15 @@ const Header = () => {
       ),
     },
   ];
-  
+
   const itemsLanguage = [
     {
       key: "1",
-      label: (
-        <button
-          onClick={() => changeLanguage('en')}
-        >
-          English
-        </button>
-      ),
+      label: <button onClick={() => changeLanguage("en")}>English</button>,
     },
     {
       key: "2",
-      label: (
-        <button 
-        onClick={() => changeLanguage('vn')}
-        >
-          Tiếng Việt
-        </button>
-      ),
+      label: <button onClick={() => changeLanguage("vn")}>Tiếng Việt</button>,
     },
   ];
   const isResponsive = useResponsive({
@@ -238,8 +238,8 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 bg-white">
-      <div className="container py-3">
+    <header className="sticky top-0 z-40 mb-10 bg-white font-macan semibold">
+      <div className="container py-4 sm:px-5 lg:px-20 border-b border-gray-300">
         <div className="header-content flex justify-between items-center">
           <div className="header-logo flex items-center space-x-4">
             <Link to={pathDefault.homePage}>
@@ -260,12 +260,12 @@ const Header = () => {
                 items: itemsFiverrPro,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3 Popular services duration-300 rounded-md"
+              className="cursor-pointer py-3 px-2 Popular hover:bg-gray-100 services duration-300 rounded-md"
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
                   Fiverr Pro
-                  <DownOutlined />
+                  <DownOutlined className="w-3" />
                 </Space>
               </a>
             </Dropdown>
@@ -275,12 +275,12 @@ const Header = () => {
                 items,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3  Popular hover:bg-gray-100 services duration-300 rounded-md"
+              className="cursor-pointer py-3 px-2 Popular hover:bg-gray-100 services duration-300 rounded-md"
             >
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
                   {t("Explore")}
-                  <DownOutlined />
+                  <DownOutlined className="w-3" />
                 </Space>
               </a>
             </Dropdown>
@@ -289,9 +289,9 @@ const Header = () => {
                 items: itemsLanguage,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3 hover:bg-gray-100 Popular services duration-300 rounded-md"
+              className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md"
             >
-              <a onClick={(e) => e.preventDefault()}>
+              <a onClick={(e) => e.preventDefault()} className="notRotate">
                 <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
                 <Space>
                   <button>{t("English")}</button>
@@ -300,7 +300,9 @@ const Header = () => {
               </a>
             </Dropdown>
 
-            <a href="#">{t("seller")}</a>
+            <a className="duration-300 hover:text-green-600 " href="#">
+              {t("seller")}
+            </a>
             <LinkCustom
               content={t("Signin")}
               to={pathDefault.register}

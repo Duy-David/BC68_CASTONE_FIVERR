@@ -36,7 +36,7 @@ const CategoriesJob = () => {
   };
 
   return (
-    <div className="my-4 border-y-2 border-gray-300 text-gray-700">
+    <div className="border-b border-gray-300 text-gray-700 sm:px-5 lg:px-20">
       <div className="container py-1">
         <Space direction="horizontal" className="flex justify-between">
           {categoryLinks.map((category, index) => (
