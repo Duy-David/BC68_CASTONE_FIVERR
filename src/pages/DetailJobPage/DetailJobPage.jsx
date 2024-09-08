@@ -86,7 +86,7 @@ const DetailJobPage = () => {
           },
         ]}
       />
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-2 md:grid-cols-3">
         <div className="container mx-auto col-span-2 ">
           {/* Job Title and Seller Information */}
           <div className="mb-6">
@@ -172,7 +172,7 @@ const DetailJobPage = () => {
           <ReviewComponent comment={comment} />
           <CommentBox avatar={avatar} />
         </div>
-        <div className="sticky top-0 ">
+        <div className="sticky top-0 my-5 col-span-2 md:col-span-1 ">
           <div className="col-span-1">
             <div className="max-w-sm mx-auto border border-gray-300 rounded-lg p-6 text-center bg-white">
               <div className="flex justify-between items-center mb-4">

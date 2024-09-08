@@ -94,7 +94,7 @@ const FormSearchProduct = ({ classWrapper }) => {
           }}
           open={checkDropdown}
         >
-          <div className="notRotate pl-4 rounded-lg border border-gray-400 flex items-center justify-between min-w-[400px]">
+          <div className="notRotate pl-4 rounded-lg border border-gray-400 flex items-center justify-between lg:min-w-[400px] sm:min-w-[300px] ">
             <input
               type="text"
               placeholder={t("What service are you looking for today?")}
