@@ -10,9 +10,9 @@ const Register = () => {
   };
   const { View } = useLottie(options);
   return (
-    <div className="flex">
-      <div className="w-1/2">{View}</div>
-      <div className="w-1/2">
+    <div className="flex flex-col md:flex-row space-y-5">
+      <div className="md:w-1/2 w-full ">{View}</div>
+      <div className="md:w-1/2 w-full">
         <FormRegister/>
       </div>
     </div>

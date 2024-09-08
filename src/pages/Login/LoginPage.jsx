@@ -65,9 +65,9 @@ const LoginPage = () => {
 
   return (
     <div className="container">
-      <div className="loginPage_content flex items-center h-screen">
-        <div className="loginPage_img w-1/2">{View}</div>
-        <div className="loginPage_form w-1/2 px-5">
+      <div className="loginPage_content flex flex-col md:flex-row space-y-5 items-center h-screen">
+        <div className="loginPage_img md:w-1/2 w-full">{View}</div>
+        <div className="loginPage_form md:w-1/2 w-full px-5">
           <form className="space-y-5" onSubmit={handleSubmit}>
             <h1 className="font-medium text-4xl text-center">Đăng nhập</h1>
             <InputCustom
@@ -107,7 +107,7 @@ const LoginPage = () => {
             to={"/dang-ky"}
           >
             {" "}
-            Chưa có tài khoản phải đăng ký thì nhấn vào để đăng ký
+            If you don't have an account, you need to register, then click to register
           </Link>
         </div>
       </div>
