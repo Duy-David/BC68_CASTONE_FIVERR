@@ -58,7 +58,7 @@ const useRoutesCustom = () => {
         //   element:  <ManagerUser />,
         // },
         {
-          path: "/manager-user",
+          path: "manager-user",
           // index: true,
           element: (
             <Suspense fallback={<Skeleton />}>
@@ -68,7 +68,7 @@ const useRoutesCustom = () => {
           ),
         },
         {
-          path: "/create-user",
+          path: "create-user",
           element: <CreateUser />,
         },
 
