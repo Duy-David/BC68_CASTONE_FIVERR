@@ -17,9 +17,7 @@ import { CreateJob } from "../pages/CreateJob/CreateJob";
 const ManagerUser = React.lazy(() =>
   import("../pages/ManagerUser/ManagerUser")
 );
-const ManagerJob = React.lazy(() =>
-  import("../pages/ManagerJob/ManagerJob")
-);
+const ManagerJob = React.lazy(() => import("../pages/ManagerJob/ManagerJob"));
 const useRoutesCustom = () => {
   // const { jobId } = useParams();
 
@@ -60,7 +58,7 @@ const useRoutesCustom = () => {
         //   element:  <ManagerUser />,
         // },
         {
-          path: "manager-user",
+          path: "/manager-user",
           // index: true,
           element: (
             <Suspense fallback={<Skeleton />}>
@@ -70,7 +68,7 @@ const useRoutesCustom = () => {
           ),
         },
         {
-          path: "create-user",
+          path: "/create-user",
           element: <CreateUser />,
         },
 
@@ -88,7 +86,6 @@ const useRoutesCustom = () => {
           path: "create-job",
           element: <CreateJob />,
         },
-
       ],
     },
     {
