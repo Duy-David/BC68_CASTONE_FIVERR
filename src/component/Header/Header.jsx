@@ -284,7 +284,7 @@ const Header = () => {
                   items: itemsFiverrPro,
                 }}
                 trigger={["click"]}
-                className="cursor-pointer  py-3 Popular hover:bg-gray-100 services duration-300 rounded-md"
+                className=" hover:cursor-pointer cursor-pointer  py-3 Popular hover:bg-gray-100 services duration-300 rounded-md"
               >
                 <div className="" onClick={(e) => e.preventDefault()}>
                   <Space>
@@ -299,7 +299,7 @@ const Header = () => {
                   items,
                 }}
                 trigger={["click"]}
-                className="cursor-pointer py-3  Popular hover:bg-gray-100 services duration-300 rounded-md"
+                className=" cursor-pointer py-3  Popular hover:bg-gray-100 services duration-300 rounded-md hover:cursor-pointer"
               >
                 <div onClick={(e) => e.preventDefault()}>
                   <Space>
@@ -313,7 +313,7 @@ const Header = () => {
                   items: itemsLanguage,
                 }}
                 trigger={["click"]}
-                className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md"
+                className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md hover:cursor-pointer"
               >
                 <div onClick={(e) => e.preventDefault()} className="notRotate">
                   <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
@@ -324,7 +324,7 @@ const Header = () => {
                 </div>
               </Dropdown>
 
-              <div className="duration-300 hover:text-green-600 " href="#">
+              <div className="duration-300 hover:text-green-600 hover:cursor-pointer "  href="#">
                 {t("seller")}
               </div>
               <LinkCustom
@@ -358,14 +358,14 @@ const Header = () => {
         <div className="p-4 bg-gray-100">
           <nav className="space-y-3 flex flex-col items-end">
             <Dropdown menu={{ items }} trigger={["click"]}>
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
+              <a onClick={(e) => e.preventDefault()} className=" hover:cursor-pointer">
+                <Space >
                   Fiverr Pro
                   <DownOutlined />
                 </Space>
               </a>
             </Dropdown>
-            <Dropdown menu={{ items }} trigger={["click"]}>
+            <Dropdown menu={{ items }} trigger={["click"]} className=" hover:cursor-pointer">
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
                   {t("Explore")}
@@ -378,7 +378,7 @@ const Header = () => {
                   items: itemsLanguage,
                 }}
                 trigger={["click"]}
-                className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md"
+                className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md  hover:cursor-pointer"
               >
                 <div onClick={(e) => e.preventDefault()} className="notRotate">
                   <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
@@ -388,7 +388,7 @@ const Header = () => {
                   </Space>
                 </div>
              </Dropdown>
-            <a className="duration-300 hover:text-green-600 " href="#">
+            <a className="duration-300 hover:text-green-600  hover:cursor-pointer " href="#">
               {t("seller")}
             </a>
          
