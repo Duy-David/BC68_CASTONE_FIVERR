@@ -22,6 +22,7 @@ const Header = () => {
   const changeLanguage = (lng = "en" | "vn") => {
     i18n.changeLanguage(lng);
   };
+
   const items = [
     {
       key: "1",
@@ -191,9 +192,31 @@ const Header = () => {
     xl: 1280,
     xxl: 1536,
   });
+  // const itemsCollapse = [
+  //   {
+  //     key: "1",
+  //     label: "Browse categories",
+  //     children: listProducts.map((item) => renderItem(item.name)),
+  //   },
+  //   {
+  //     key: "2",
+  //     label: "Explore",
+  //     children: items.map((item) => renderItem(item.title)),
+  //   },
+  //   {
+  //     key: "3",
+  //     label: "Fiverr Pro",
+  //     children: (
+  //       <>
+  //         {renderItem("I'm looking to hire")}
+  //         {renderItem("I want to offer Pro services")}
+  //       </>
+  //     ),
+  //   },
+  // ];
   const [activeForm, setActiveForm] = useState(false);
   const [activeCategoriesJob, setActiveCategoriesJob] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
   const sidebarRef = useRef(null);
   const buttonRef = useRef(null);
   const { pathname } = useLocation();
@@ -255,74 +278,78 @@ const Header = () => {
             />
           </div>
           {!isResponsive.lg ? (
-          <nav className=" space-x-3 flex items-center justify-between ">
-            <Dropdown
-              menu={{
-                items: itemsFiverrPro,
-              }}
-              trigger={["click"]}
-              className="cursor-pointer  py-3 Popular hover:bg-gray-100 services duration-300 rounded-md"
-            >
-              <div className="" onClick={(e) => e.preventDefault()}>
-                <Space>
-                  Fiverr Pro
-                  <DownOutlined className="w-3" />
-                </Space>
-              </div>
-            </Dropdown>
+            <nav className=" space-x-3 flex items-center justify-between ">
+              <Dropdown
+                menu={{
+                  items: itemsFiverrPro,
+                }}
+                trigger={["click"]}
+                className="cursor-pointer  py-3 Popular hover:bg-gray-100 services duration-300 rounded-md"
+              >
+                <div className="" onClick={(e) => e.preventDefault()}>
+                  <Space>
+                    Fiverr Pro
+                    <DownOutlined className="w-3" />
+                  </Space>
+                </div>
+              </Dropdown>
 
-            <Dropdown
-              menu={{
-                items,
-              }}
-              trigger={["click"]}
-              className="cursor-pointer py-3  Popular hover:bg-gray-100 services duration-300 rounded-md"
-            >
-              <div onClick={(e) => e.preventDefault()}>
-                <Space>
-                  {t("Explore")}
-                  <DownOutlined className="w-3" />
-                </Space>
-              </div>
-            </Dropdown>
-            <Dropdown
-              menu={{
-                items: itemsLanguage,
-              }}
-              trigger={["click"]}
-              className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md"
-            >
-              <div onClick={(e) => e.preventDefault()} className="notRotate">
-                <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
-                <Space>
-                  <button>{t("English")}</button>
-                  {/* <DownOutlined /> */}
-                </Space>
-              </div>
-            </Dropdown>
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                trigger={["click"]}
+                className="cursor-pointer py-3  Popular hover:bg-gray-100 services duration-300 rounded-md"
+              >
+                <div onClick={(e) => e.preventDefault()}>
+                  <Space>
+                    {t("Explore")}
+                    <DownOutlined className="w-3" />
+                  </Space>
+                </div>
+              </Dropdown>
+              <Dropdown
+                menu={{
+                  items: itemsLanguage,
+                }}
+                trigger={["click"]}
+                className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md"
+              >
+                <div onClick={(e) => e.preventDefault()} className="notRotate">
+                  <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
+                  <Space>
+                    <button>{t("English")}</button>
+                    {/* <DownOutlined /> */}
+                  </Space>
+                </div>
+              </Dropdown>
 
-            <div className="duration-300 hover:text-green-600 " href="#">
-              {t("seller")}
-            </div>
-            <LinkCustom
-              content={t("Signin")}
-              to={pathDefault.register}
-              className={"bg-green-600 text-white "}
-            />
-            <LinkCustom
-              content={t("JOIN")}
-              to={pathDefault.login}
-              className={"border border-green-500 text-green-500"}
-            />
-          </nav>):(
+              <div className="duration-300 hover:text-green-600 " href="#">
+                {t("seller")}
+              </div>
+              <LinkCustom
+                content={t("Signin")}
+                to={pathDefault.register}
+                className={"bg-green-600 text-white "}
+              />
+              <LinkCustom
+                content={t("JOIN")}
+                to={pathDefault.login}
+                className={"border border-green-500 text-green-500"}
+              />
+            </nav>
+          ) : (
             // Khi màn hình nhỏ hơn lg, hiển thị nút menu
-            
-            <button 
+
+            <button
               className="bg-green-600 text-white px-5 py-2 rounded-md"
               onClick={() => setMenuOpen(!menuOpen)} // Toggle trạng thái mở menu
-            
-          >
-            {!menuOpen?<FontAwesomeIcon icon="fa-solid fa-bars" /> : <FontAwesomeIcon icon="fa-solid fa-x" />}  
+            >
+              {!menuOpen ? (
+                <FontAwesomeIcon icon="fa-solid fa-bars" />
+              ) : (
+                <FontAwesomeIcon icon="fa-solid fa-x" />
+              )}
             </button>
           )}
         </div>
@@ -346,16 +373,35 @@ const Header = () => {
                 </Space>
               </a>
             </Dropdown>
+            <Dropdown
+                menu={{
+                  items: itemsLanguage,
+                }}
+                trigger={["click"]}
+                className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md"
+              >
+                <div onClick={(e) => e.preventDefault()} className="notRotate">
+                  <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
+                  <Space>
+                    <button>{t("English")}</button>
+                    {/* <DownOutlined /> */}
+                  </Space>
+                </div>
+             </Dropdown>
             <a className="duration-300 hover:text-green-600 " href="#">
               {t("seller")}
             </a>
-            <Dropdown menu={{ items: [{ key: "1", label: "English" }, { key: "2", label: "Tiếng Việt" }] }}>
-              <a>
-                <Space>{t("English")}</Space>
-              </a>
-            </Dropdown>
-            <LinkCustom to={pathDefault.register} content={t("Signin")} className="inline-block  bg-green-600 text-white" />
-            <LinkCustom to={pathDefault.login} content={t("JOIN")} className="inline-block border border-green-500 text-green-500" />
+         
+            <LinkCustom
+              to={pathDefault.register}
+              content={t("Signin")}
+              className="inline-block  bg-green-600 text-white"
+            />
+            <LinkCustom
+              to={pathDefault.login}
+              content={t("JOIN")}
+              className="inline-block border border-green-500 text-green-500"
+            />
           </nav>
         </div>
       )}

@@ -26,7 +26,7 @@ const Categories = () => {
     { icon: <IconCosulting size={size} />, title: "Consulting" },
   ];
   return (
-    <div className="container grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9 gap-4 mt-5 DTwxxPA">
+    <div className="container grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9 gap-4 mt-28 lg:mt-24 DTwxxPA">
       {categories.map((item, index) => {
         return (
           <div
