@@ -254,7 +254,7 @@ const Header = () => {
             />
           </div>
 
-          <nav className="header-navigation space-x-5">
+          <nav className="header-navigation space-x-3">
             <Dropdown
               menu={{
                 items: itemsFiverrPro,
