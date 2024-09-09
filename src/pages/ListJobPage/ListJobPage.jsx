@@ -28,12 +28,15 @@ const ListJobPage = () => {
   }, [searchParam]);
   const renderListJob = () => {
     return (
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
         {listJob.map((item) => {
           console.log(item);
           return (
-            <Link to={`${pathDefault.detailListJob.replace(":jobId", item.id)}`} key={item.id}>
-              <div className="border border-gray-300">
+            <Link
+              to={`${pathDefault.detailListJob.replace(":jobId", item.id)}`}
+              key={item.id}
+            >
+              <div className="border border-gray-300 ">
                 <img src={item.congViec.hinhAnh} alt="" className="w-full" />
                 <div className="px-3">
                   {/* info author */}

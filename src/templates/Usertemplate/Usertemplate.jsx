@@ -10,7 +10,7 @@ const Usertemplate = () => {
   return (
     <div className="container mx-auto">
       <Header />
-      <main className="px-3 sm:px-5 lg:px-20">
+      <main className="px-3 sm:px-5">
         {/*  */}
         <Outlet />
       </main>

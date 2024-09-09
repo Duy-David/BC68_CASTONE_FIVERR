@@ -193,6 +193,7 @@ const Header = () => {
   });
   const [activeForm, setActiveForm] = useState(false);
   const [activeCategoriesJob, setActiveCategoriesJob] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
   const sidebarRef = useRef(null);
   const buttonRef = useRef(null);
   const { pathname } = useLocation();
@@ -239,8 +240,8 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-40 mb-10 bg-white font-macan semibold">
-      <div className="container py-4 px-3 sm:px-5 lg:px-20 border-b border-gray-300">
-        <div className="header-content flex justify-between items-center">
+      <div className="container py-4 px-3 sm:px-5  border-b border-gray-300">
+        <div className="header-content space-x-2 flex justify-between items-center">
           <div className="header-logo flex items-center space-x-4">
             <Link to={pathDefault.homePage}>
               <IconLogoHeader />
@@ -250,24 +251,24 @@ const Header = () => {
                 activeForm || pathname !== pathDefault.homePage
                   ? "visible opacity-100"
                   : "invisible opacity-0"
-              } duration-300`}
+              } duration-300 w-100`}
             />
           </div>
-
-          <nav className="header-navigation space-x-3">
+          {!isResponsive.lg ? (
+          <nav className=" space-x-3 flex items-center justify-between ">
             <Dropdown
               menu={{
                 items: itemsFiverrPro,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3 px-2 Popular hover:bg-gray-100 services duration-300 rounded-md"
+              className="cursor-pointer  py-3 Popular hover:bg-gray-100 services duration-300 rounded-md"
             >
-              <a onClick={(e) => e.preventDefault()}>
+              <div className="" onClick={(e) => e.preventDefault()}>
                 <Space>
                   Fiverr Pro
                   <DownOutlined className="w-3" />
                 </Space>
-              </a>
+              </div>
             </Dropdown>
 
             <Dropdown
@@ -275,14 +276,14 @@ const Header = () => {
                 items,
               }}
               trigger={["click"]}
-              className="cursor-pointer py-3 px-2 Popular hover:bg-gray-100 services duration-300 rounded-md"
+              className="cursor-pointer py-3  Popular hover:bg-gray-100 services duration-300 rounded-md"
             >
-              <a onClick={(e) => e.preventDefault()}>
+              <div onClick={(e) => e.preventDefault()}>
                 <Space>
                   {t("Explore")}
                   <DownOutlined className="w-3" />
                 </Space>
-              </a>
+              </div>
             </Dropdown>
             <Dropdown
               menu={{
@@ -291,31 +292,73 @@ const Header = () => {
               trigger={["click"]}
               className="cursor-pointer py-3 px-2 hover:text-green-600 Popular services duration-300 rounded-md"
             >
-              <a onClick={(e) => e.preventDefault()} className="notRotate">
+              <div onClick={(e) => e.preventDefault()} className="notRotate">
                 <FontAwesomeIcon icon="fa-solid fa-globe" className="pr-1" />
                 <Space>
                   <button>{t("English")}</button>
                   {/* <DownOutlined /> */}
                 </Space>
-              </a>
+              </div>
             </Dropdown>
 
-            <a className="duration-300 hover:text-green-600 " href="#">
+            <div className="duration-300 hover:text-green-600 " href="#">
               {t("seller")}
-            </a>
+            </div>
             <LinkCustom
               content={t("Signin")}
               to={pathDefault.register}
-              className={"bg-green-600 text-white"}
+              className={"bg-green-600 text-white "}
             />
             <LinkCustom
               content={t("JOIN")}
               to={pathDefault.login}
               className={"border border-green-500 text-green-500"}
             />
-          </nav>
+          </nav>):(
+            // Khi màn hình nhỏ hơn lg, hiển thị nút menu
+            
+            <button 
+              className="bg-green-600 text-white px-5 py-2 rounded-md"
+              onClick={() => setMenuOpen(!menuOpen)} // Toggle trạng thái mở menu
+            
+          >
+            {!menuOpen?<FontAwesomeIcon icon="fa-solid fa-bars" /> : <FontAwesomeIcon icon="fa-solid fa-x" />}  
+            </button>
+          )}
         </div>
       </div>
+      {isResponsive.lg && menuOpen && (
+        <div className="p-4 bg-gray-100">
+          <nav className="space-y-3 flex flex-col items-end">
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  Fiverr Pro
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  {t("Explore")}
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
+            <a className="duration-300 hover:text-green-600 " href="#">
+              {t("seller")}
+            </a>
+            <Dropdown menu={{ items: [{ key: "1", label: "English" }, { key: "2", label: "Tiếng Việt" }] }}>
+              <a>
+                <Space>{t("English")}</Space>
+              </a>
+            </Dropdown>
+            <LinkCustom to={pathDefault.register} content={t("Signin")} className="inline-block  bg-green-600 text-white" />
+            <LinkCustom to={pathDefault.login} content={t("JOIN")} className="inline-block border border-green-500 text-green-500" />
+          </nav>
+        </div>
+      )}
       {(activeCategoriesJob || pathname !== pathDefault.homePage) &&
         !isResponsive.lg && <CategoriesJob />}
     </header>

@@ -8,7 +8,7 @@ const ECommerceProject = () => {
       className=" text-white p-8 md:p-16 rounded-lg container my-20"
       style={{ background: "#003912" }}
     >
-      <div className="md:flex items-center">
+      <div className=" flex md:flex-row flex-col  items-center">
         <div className="md:w-1/2 mb-8 md:mb-0">
           <h2 className="text-5xl font-semibold">
             fiverr <span className="font-light">pro</span>
@@ -23,10 +23,12 @@ const ECommerceProject = () => {
     strategies, and UGC videos.`)}
           </p>
           <h4 className="text-xl font-semibold mb-4">
-           {t("To get started, you should have:")} 
+            {t("To get started, you should have:")}
           </h4>
           <ul className="list-disc pl-6 mb-6">
-            <li>{t("An e-Commerce project requiring expertise in various fields")}</li>
+            <li>
+              {t("An e-Commerce project requiring expertise in various fields")}
+            </li>
             <li>{t("A budget exceeding $1000")}</li>
             <li>{t("A desire to get things done, without the hassle")}</li>
           </ul>
