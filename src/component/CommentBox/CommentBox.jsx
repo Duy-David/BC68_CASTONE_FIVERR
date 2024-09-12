@@ -3,20 +3,20 @@ import { congViecChiTietService } from "../../service/congviecchitiet.service";
 import { getCurrentDateTime } from "../../util/utils";
 import { NotificationContext } from "../../App";
 import { useSelector } from "react-redux";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 
-const CommentBox = ({ avatar }) => {
+const CommentBox = ({ avatar, maCongViec }) => {
   const { handleNotification } = useContext(NotificationContext );
   const { user } = useSelector((state) => state.authSlice);
-
+  const userId =  user.user
   const [comment, setComment] = useState({
-    maCongViec: 0,
-    maNguoiBinhLuan: 0,
+    maCongViec: maCongViec,
+    maNguoiBinhLuan: userId.id ,
     ngayBinhLuan: getCurrentDateTime(),
     noiDung: "",
     saoBinhLuan: 5,
   });
-
   // const [isActive, setIsActive] = useState(true);
 
   const handleChangeTextArea = (event) => {

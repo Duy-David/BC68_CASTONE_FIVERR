@@ -170,7 +170,7 @@ const DetailJobPage = () => {
           </div>
           <RatingComponent saoCongViec={saoCongViec} danhGia={danhGia} />
           <ReviewComponent comment={comment} />
-          <CommentBox avatar={avatar} />
+          <CommentBox avatar={avatar} maCongViec={jobId}/>
         </div>
         <div className="sticky top-0 my-5 col-span-2 md:col-span-1 ">
           <div className="col-span-1">

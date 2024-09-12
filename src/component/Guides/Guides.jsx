@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { pathDefault } from "../../common/path";
 const Guides = () => {
   let settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
